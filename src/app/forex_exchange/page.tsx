@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PageShell } from "@/components/site/page-shell";
 import { ServicesNav } from "@/components/site/services-nav";
 import { Newsletter } from "@/components/site/newsletter";
+import { submitInquiry } from "@/lib/api";
 import {
   DollarSign,
   Briefcase,
@@ -112,6 +113,7 @@ export default function ForexPage() {
   const [transactionType, setTransactionType] = useState<"buy" | "sell">("buy");
   const [deliveryPref, setDeliveryPref] = useState("Doorstep Delivery");
   const [travelDate, setTravelDate] = useState("");
+  const [assistanceType, setAssistanceType] = useState("Both (Recommended Combo)");
 
   // Live calculator calculation
   const [totalINR, setTotalINR] = useState(84500);
@@ -131,6 +133,7 @@ export default function ForexPage() {
   const [inquirerPhone, setInquirerPhone] = useState("");
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -143,18 +146,41 @@ export default function ForexPage() {
     setShowInquiry(true);
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setShowInquiry(false);
-      setAmount("1000");
-      setTravelDate("");
-      setInquirerName("");
-      setInquirerPhone("");
-      setInquirerEmail("");
-    }, 3000);
+    setSubmitting(true);
+
+    const success = await submitInquiry({
+      full_name: inquirerName,
+      email: inquirerEmail,
+      phone: inquirerPhone,
+      inquiry_type: "forex_exchange_assistance",
+      message: `Forex Enquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.`,
+      forex: {
+        currency: currency,
+        amount: parseFloat(amount) || 0,
+        delivery_preference: deliveryPref,
+        assistance_type: assistanceType,
+        travel_date: travelDate || null,
+        travel_destination: null
+      }
+    });
+
+    setSubmitting(false);
+    if (success) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowInquiry(false);
+        setAmount("1000");
+        setTravelDate("");
+        setInquirerName("");
+        setInquirerPhone("");
+        setInquirerEmail("");
+      }, 4000);
+    } else {
+      alert("Failed to submit enquiry. Please check your details and try again.");
+    }
   };
 
   return (
@@ -310,6 +336,8 @@ export default function ForexPage() {
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-muted-foreground uppercase">Assistance Category</label>
                 <select
+                  value={assistanceType}
+                  onChange={(e) => setAssistanceType(e.target.value)}
                   className="w-full px-4 py-3 rounded-2xl border border-border bg-background text-sm text-foreground focus:outline-none focus:border-primary appearance-none"
                 >
                   <option>Currency Cash Notes</option>
@@ -404,9 +432,20 @@ export default function ForexPage() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer"
+                      disabled={submitting}
+                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      Confirm Exchange Rates
+                      {submitting ? (
+                        <>
+                          <svg className="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Submitting...
+                        </>
+                      ) : (
+                        "Confirm Exchange Rates"
+                      )}
                     </button>
                   </form>
                 </div>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PageShell } from "@/components/site/page-shell";
 import { ServicesNav } from "@/components/site/services-nav";
 import { Newsletter } from "@/components/site/newsletter";
+import { submitInquiry } from "@/lib/api";
 import {
   MapPin,
   Calendar,
@@ -113,6 +114,7 @@ export default function HotelsPage() {
   const [inquirerPhone, setInquirerPhone] = useState("");
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -125,19 +127,42 @@ export default function HotelsPage() {
     setShowInquiry(true);
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setShowInquiry(false);
-      setDestination("");
-      setCheckIn("");
-      setCheckOut("");
-      setInquirerName("");
-      setInquirerPhone("");
-      setInquirerEmail("");
-    }, 3000);
+    setSubmitting(true);
+
+    const success = await submitInquiry({
+      full_name: inquirerName,
+      email: inquirerEmail,
+      phone: inquirerPhone,
+      inquiry_type: "hotels",
+      message: `Hotel Booking Enquiry in ${destination} from ${checkIn} to ${checkOut}. Room: ${roomType}. Guests: ${guests}. Budget: ${budgetRange}.`,
+      hotels: {
+        destination: destination,
+        check_in_date: checkIn,
+        check_out_date: checkOut,
+        guests: parseInt(guests) || 2,
+        budget_range: budgetRange.toLowerCase().includes("luxury") ? "high" : budgetRange.toLowerCase().includes("mid") ? "medium" : "low" as any,
+        room_type: roomType.toLowerCase().replace(" ", "") as any
+      }
+    });
+
+    setSubmitting(false);
+    if (success) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowInquiry(false);
+        setDestination("");
+        setCheckIn("");
+        setCheckOut("");
+        setInquirerName("");
+        setInquirerPhone("");
+        setInquirerEmail("");
+      }, 4000);
+    } else {
+      alert("Failed to submit enquiry. Please double check your details and try again.");
+    }
   };
 
   return (
@@ -376,9 +401,14 @@ export default function HotelsPage() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer"
+                      disabled={submitting}
+                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer flex items-center justify-center gap-2"
                     >
-                      Get Hotel Quotation
+                      {submitting ? (
+                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
+                      ) : (
+                        "Get Hotel Quotation"
+                      )}
                     </button>
                   </form>
                 </div>

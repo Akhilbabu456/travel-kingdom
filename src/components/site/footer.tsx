@@ -37,6 +37,12 @@ export function Footer() {
         </div>
         <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Travel Kingdom. All rights reserved.</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/terms" className="hover:text-primary transition">Terms & Conditions</Link>
+            <Link href="/privacy" className="hover:text-primary transition">Privacy Policy</Link>
+            <Link href="/careers" className="hover:text-primary transition">Careers</Link>
+            <Link href="/feedback" className="hover:text-primary transition">Feedback</Link>
+          </div>
           <p>Crafted with care. From concern to freedom.</p>
         </div>
       </div>

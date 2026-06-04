@@ -8,7 +8,7 @@ export function PackageCard({ p }: { p: Package }) {
     <motion.div whileHover={{ y: -6 }} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow hover:shadow-luxe">
       <Link href={`/packages/${p.slug}`} className="block">
         <div className="relative aspect-[5/4] overflow-hidden">
-          <img src={p.image?.src ?? p.image} alt={p.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110" loading="lazy" />
+          <img src={(p.image as any)?.src ?? p.image} alt={p.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           <div className="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-foreground">
             <Star className="h-3 w-3 fill-primary text-primary" /> {p.rating} · {p.reviews}

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PageShell } from "@/components/site/page-shell";
 import { ServicesNav } from "@/components/site/services-nav";
 import { Newsletter } from "@/components/site/newsletter";
+import { submitInquiry } from "@/lib/api";
 import {
   Plane,
   Calendar,
@@ -69,7 +70,7 @@ const testimonials = [
     name: "Rohan Deshmukh",
     rating: 5,
     trip: "Business Class to London",
-    quote: "Booked our business class flights to London through Travel Kingdom. The booking process was seamless, and the pricing was notably better than any online portals. Truly professional and premium service!",
+    quote: "Booked our business class flights to Travel Kingdom. The booking process was seamless, and the pricing was notably better than any online portals. Truly professional and premium service!",
   },
   {
     name: "Ananya Sen",
@@ -112,6 +113,7 @@ export default function FlightsPage() {
   const [inquirerPhone, setInquirerPhone] = useState("");
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -124,20 +126,45 @@ export default function FlightsPage() {
     setShowInquiry(true);
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setShowInquiry(false);
-      setFrom("");
-      setTo("");
-      setDepartDate("");
-      setReturnDate("");
-      setInquirerName("");
-      setInquirerPhone("");
-      setInquirerEmail("");
-    }, 3000);
+    setSubmitting(true);
+
+    const success = await submitInquiry({
+      full_name: inquirerName,
+      email: inquirerEmail,
+      phone: inquirerPhone,
+      inquiry_type: "flight",
+      message: `Flight Booking Enquiry from ${from} to ${to} on ${departDate}. Return: ${returnDate || "None"}. Class: ${classType}. Travelers: ${passengers}. Special Fare: ${specialFare}.`,
+      flight: {
+        origin: from,
+        destination: to,
+        departure_date: departDate,
+        return_date: returnDate || null,
+        travelers: parseInt(passengers) || 1,
+        travel_class: classType.toLowerCase().replace(" ", "") as any,
+        special_fare: specialFare.toLowerCase() as any,
+        trip_type: tripType
+      }
+    });
+
+    setSubmitting(false);
+    if (success) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowInquiry(false);
+        setFrom("");
+        setTo("");
+        setDepartDate("");
+        setReturnDate("");
+        setInquirerName("");
+        setInquirerPhone("");
+        setInquirerEmail("");
+      }, 4000);
+    } else {
+      alert("Failed to submit enquiry. Please double check your details and try again.");
+    }
   };
 
   return (
@@ -415,9 +442,14 @@ export default function FlightsPage() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer"
+                      disabled={submitting}
+                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer flex items-center justify-center gap-2"
                     >
-                      Request Quotation
+                      {submitting ? (
+                        <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
+                      ) : (
+                        "Request Quotation"
+                      )}
                     </button>
                   </form>
                 </div>

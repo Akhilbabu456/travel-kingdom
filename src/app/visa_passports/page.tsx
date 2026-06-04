@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PageShell } from "@/components/site/page-shell";
 import { ServicesNav } from "@/components/site/services-nav";
 import { Newsletter } from "@/components/site/newsletter";
+import { submitInquiry } from "@/lib/api";
 import {
   Globe,
   FileText,
@@ -41,7 +42,7 @@ const heroSlides = [
 
 const faqs = [
   {
-    q: "Which countries can I apply for visas through Travel Kingdom?",
+    q: "What countries can I apply for visas through Travel Kingdom?",
     a: "We assist with visa applications for over 50+ countries. This includes Schengen states (Europe), USA, UK, Canada, UAE (Dubai), Singapore, Malaysia, Thailand, and Australia. We manage both sticker visas and electronic e-visas.",
   },
   {
@@ -103,6 +104,7 @@ export default function VisaPage() {
   const [inquirerPhone, setInquirerPhone] = useState("");
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -115,18 +117,40 @@ export default function VisaPage() {
     setShowInquiry(true);
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setShowInquiry(false);
-      setDestination("");
-      setTravelDate("");
-      setInquirerName("");
-      setInquirerPhone("");
-      setInquirerEmail("");
-    }, 3000);
+    setSubmitting(true);
+
+    const success = await submitInquiry({
+      full_name: inquirerName,
+      email: inquirerEmail,
+      phone: inquirerPhone,
+      inquiry_type: "visa",
+      message: `Visa Enquiry for ${destination} from nationality ${nationality}. Passport status: ${passportStatus}. Travel Date: ${travelDate}. Category: ${visaType}.`,
+      visa: {
+        nationality: nationality,
+        destination_country: destination,
+        visa_type: visaType.toLowerCase().replace(" ", "") as any,
+        passport_status: passportStatus.toLowerCase().includes("valid") ? "valid" : passportStatus.toLowerCase().includes("expired") ? "expired" : "not_issued" as any,
+        travel_date: travelDate
+      }
+    });
+
+    setSubmitting(false);
+    if (success) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowInquiry(false);
+        setDestination("");
+        setTravelDate("");
+        setInquirerName("");
+        setInquirerPhone("");
+        setInquirerEmail("");
+      }, 4000);
+    } else {
+      alert("Failed to submit enquiry. Please double check your details and try again.");
+    }
   };
 
   return (
@@ -346,9 +370,20 @@ export default function VisaPage() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer"
+                      disabled={submitting}
+                      className="w-full py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-glow hover:opacity-90 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      Verify Document Checklist
+                      {submitting ? (
+                        <>
+                          <svg className="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Submitting...
+                        </>
+                      ) : (
+                        "Verify Document Checklist"
+                      )}
                     </button>
                   </form>
                 </div>

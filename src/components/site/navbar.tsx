@@ -12,7 +12,8 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/destinations", label: "Destinations", mega: true },
   { to: "/packages", label: "Packages" },
-  { to: "/about", label: "About" },
+  { to: "/past-tours", label: "Past Tours" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -30,7 +31,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setMobile(false); setOpenMega(false); }, [pathname]);
+  useEffect(() => {
+    setMobile(false);
+    setOpenMega(false);
+  }, [pathname]);
 
   const transparent = isHome && !scrolled;
 
@@ -50,12 +54,17 @@ export function Navbar() {
           {nav.map((item) => {
             const active = pathname === item.to;
             return (
-              <div key={item.to} onMouseEnter={() => item.mega && setOpenMega(true)} onMouseLeave={() => item.mega && setOpenMega(false)} className="relative">
+              <div
+                key={item.to}
+                onMouseEnter={() => item.mega && setOpenMega(true)}
+                onMouseLeave={() => item.mega && setOpenMega(false)}
+                className="relative"
+              >
                 <Link
                   href={item.to}
                   className={`group rounded-full px-3.5 py-2 text-sm transition-colors ${
                     active
-                      ? `rounded-full px-3.5 py-2 text-sm font-semibold ${transparent ? "text-white" : "text-primary"}`
+                      ? `font-semibold ${transparent ? "text-white" : "text-primary"}`
                       : `font-medium ${transparent ? "text-white/85 hover:text-white" : "text-foreground/75 hover:text-foreground"}`
                   }`}
                 >
@@ -74,7 +83,7 @@ export function Navbar() {
                         {destinations.slice(0, 6).map((d) => (
                           <Link key={d.slug} href={`/destinations/${d.slug}`} className="group block overflow-hidden rounded-2xl">
                             <div className="relative aspect-[4/3] overflow-hidden">
-                              <img src={d.image?.src ?? d.image} alt={d.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                              <img src={d.image} alt={d.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                               <div className="absolute bottom-2 left-3 text-white">
                                 <div className="font-display text-base">{d.name}</div>
@@ -96,14 +105,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <button aria-label="Search" className={`grid h-10 w-10 place-items-center rounded-full transition-colors ${transparent ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"}`}>
+          <Link href="/packages" aria-label="Search" className={`grid h-10 w-10 place-items-center rounded-full transition-colors ${transparent ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"}`}>
             <Search className="h-4 w-4" />
-          </button>
+          </Link>
           <a href="tel:+919860874848" className={`hidden xl:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${transparent ? "text-white/90" : "text-foreground/80"}`}>
             <Phone className="h-4 w-4" /> +91 98608 74848
           </a>
-          <Link href="/booking" className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5">
-            Plan my trip
+          <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5">
+            Plan My Trip
           </Link>
         </div>
 
@@ -139,8 +148,8 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <Link href="/booking" className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-medium text-primary-foreground">
-                Plan my trip
+              <Link href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-medium text-primary-foreground">
+                Plan My Trip
               </Link>
             </motion.nav>
           </motion.div>
