@@ -22,15 +22,18 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "maldives-ultimate-overwater-guide",
     title: "Maldives Ultimate Guide: How to Select the Perfect Overwater Villa",
-    excerpt: "Planning a trip to the Maldives? Discover when to visit, what inclusions to verify, and how to pick the right coral lagoon resort for your dream holiday.",
+    excerpt:
+      "Planning a trip to the Maldives? Discover when to visit, what inclusions to verify, and how to pick the right coral lagoon resort for your dream holiday.",
     date: "June 02, 2026",
     readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80",
     category: "Luxury Travel",
     author: {
       name: "Alka Gupta",
       role: "Senior Holiday Designer",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80",
     },
     content: [
       {
@@ -62,15 +65,18 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "bali-hidden-gems-revealed",
     title: "Bali's 7 Hidden Gems You Must Visit in 2026",
-    excerpt: "Ditch the crowded beaches of Kuta. Explore pristine waterfalls, cliffside shrines, and quiet villages in the cultural heartlands of Bali.",
+    excerpt:
+      "Ditch the crowded beaches of Kuta. Explore pristine waterfalls, cliffside shrines, and quiet villages in the cultural heartlands of Bali.",
     date: "May 28, 2026",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80",
     category: "Hidden Gems",
     author: {
       name: "Abhishek Gupta",
       role: "Operations Manager",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80",
+      avatar:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80",
     },
     content: [
       {
@@ -82,9 +88,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         sectionTitle: "The Top 3 Unspoiled Spots to Explore",
-        paragraphs: [
-          "Add these stunning locations to your next custom itinerary:",
-        ],
+        paragraphs: ["Add these stunning locations to your next custom itinerary:"],
         listItems: [
           "Munduk Village: High in the northern hills, filled with clove plantations, wild cacao, and cooler mountain weather.",
           "Nusa Penida's East Coast: While Kelingking beach is famous, the east coast offers quiet spots like Diamond Beach and Atuh Cliff.",
@@ -102,15 +106,18 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "switzerland-scenic-train-guide",
     title: "Switzerland Alpine Trains: The Ultimate Scenic Journey Guide",
-    excerpt: "A complete guide to navigating the Glacier Express, Bernina Express, and panoramic Alpine routes for a stress-free Swiss holiday.",
+    excerpt:
+      "A complete guide to navigating the Glacier Express, Bernina Express, and panoramic Alpine routes for a stress-free Swiss holiday.",
     date: "May 20, 2026",
     readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=800&q=80",
     category: "Travel Tips",
     author: {
       name: "Pooja Gupta",
       role: "Senior Holiday Designer",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80",
+      avatar:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80",
     },
     content: [
       {
@@ -136,15 +143,18 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "kerala-ayurveda-backwaters-escape",
     title: "Kerala Backwaters & Ayurveda: The Perfect Mindful Healing Escape",
-    excerpt: "Unwind along quiet palm-fringed canals on a private houseboat and restore your body with authentic Ayurvedic therapies.",
+    excerpt:
+      "Unwind along quiet palm-fringed canals on a private houseboat and restore your body with authentic Ayurvedic therapies.",
     date: "May 10, 2026",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
     category: "Wellness Escapes",
     author: {
       name: "Rohit Kumar Gupta",
       role: "Founder & Director",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
     },
     content: [
       {
@@ -156,9 +166,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         sectionTitle: "What to Expect in a Backwater Houseboat Cruise",
-        paragraphs: [
-          "A classic houseboat cruise (Kettuvallam) is a must. Here is what to verify:",
-        ],
+        paragraphs: ["A classic houseboat cruise (Kettuvallam) is a must. Here is what to verify:"],
         listItems: [
           "Air Conditioning: Confirm whether your booking offers full-time A/C or only during night hours (we secure full-time A/C houseboats).",
           "Chef on Board: Traditional Kerala meals (Karimeen Pollichathu, local red rice) are prepared fresh on board by a dedicated chef.",

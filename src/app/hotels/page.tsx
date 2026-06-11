@@ -28,22 +28,28 @@ import {
 // Hotel Page Hero Slides matching live website
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Stay in Comfort",
     title: "Stay in Comfort,\nAnywhere You Go",
-    subtitle: "From boutique stays to luxury resorts, discover hotels that fit your style and budget effortlessly.",
+    subtitle:
+      "From boutique stays to luxury resorts, discover hotels that fit your style and budget effortlessly.",
   },
   {
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Perfect Escape",
     title: "Find the Perfect Stay\nfor Every Trip",
-    subtitle: "We handpick hotels with the best mix of comfort, location, and value – just for you.",
+    subtitle:
+      "We handpick hotels with the best mix of comfort, location, and value – just for you.",
   },
   {
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Unwind in Style",
     title: "Unwind in Style\nAcross the Globe",
-    subtitle: "Enjoy exclusive hotel deals and trusted accommodations in over 100+ destinations worldwide.",
+    subtitle:
+      "Enjoy exclusive hotel deals and trusted accommodations in over 100+ destinations worldwide.",
   },
 ];
 
@@ -71,23 +77,35 @@ const testimonials = [
     name: "Vikas Patel",
     rating: 5,
     trip: "Resort Stay in Bali",
-    quote: "Booked our Bali resort through Travel Kingdom. The property was exactly as promised, and the price was much better than any online portals. Had a completely comfortable and luxurious stay.",
+    quote:
+      "Booked our Bali resort through Travel Kingdom. The property was exactly as promised, and the price was much better than any online portals. Had a completely comfortable and luxurious stay.",
   },
   {
     name: "Ayesha Khan",
     rating: 5,
     trip: "Singapore & Malaysia stays",
-    quote: "We stayed in Singapore and Malaysia. The hotels selected were well-located near metro stations, which made commuting very convenient. The Travel Kingdom team managed all our breakfasts, room upgrades, and seamless transfers.",
+    quote:
+      "We stayed in Singapore and Malaysia. The hotels selected were well-located near metro stations, which made commuting very convenient. The Travel Kingdom team managed all our breakfasts, room upgrades, and seamless transfers.",
   },
   {
     name: "Harshal Thombre",
     rating: 5,
     trip: "Boutique stays in Europe",
-    quote: "Needed boutique, central hotels in Europe, and Travel Kingdom gave us perfect options – clean, safe, and centrally located. They even managed an early check-in for us after a exhausting long-haul flight.",
+    quote:
+      "Needed boutique, central hotels in Europe, and Travel Kingdom gave us perfect options – clean, safe, and centrally located. They even managed an early check-in for us after a exhausting long-haul flight.",
   },
 ];
 
-const brands = ["Marriott", "Hilton", "Taj Hotels", "Hyatt", "Shangri-La", "InterContinental", "Oberoi", "Accor"];
+const brands = [
+  "Marriott",
+  "Hilton",
+  "Taj Hotels",
+  "Hyatt",
+  "Shangri-La",
+  "InterContinental",
+  "Oberoi",
+  "Accor",
+];
 
 export default function HotelsPage() {
   const [slideIdx, setSlideIdx] = useState(0);
@@ -142,9 +160,13 @@ export default function HotelsPage() {
         check_in_date: checkIn,
         check_out_date: checkOut,
         guests: parseInt(guests) || 2,
-        budget_range: budgetRange.toLowerCase().includes("luxury") ? "high" : budgetRange.toLowerCase().includes("mid") ? "medium" : "low" as any,
-        room_type: roomType.toLowerCase().replace(" ", "") as any
-      }
+        budget_range: budgetRange.toLowerCase().includes("luxury")
+          ? "high"
+          : budgetRange.toLowerCase().includes("mid")
+            ? "medium"
+            : ("low" as any),
+        room_type: roomType.toLowerCase().replace(" ", "") as any,
+      },
     });
 
     setSubmitting(false);
@@ -219,7 +241,9 @@ export default function HotelsPage() {
             {/* Inputs Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2 lg:col-span-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Destination</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Destination
+                </label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -234,7 +258,9 @@ export default function HotelsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Check-In</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Check-In
+                </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -248,7 +274,9 @@ export default function HotelsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Check-Out</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Check-Out
+                </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -265,7 +293,9 @@ export default function HotelsPage() {
             {/* Dropdowns row */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Room Type</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Room Type
+                </label>
                 <div className="relative">
                   <Building className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
@@ -283,7 +313,9 @@ export default function HotelsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Guests / Rooms</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Guests / Rooms
+                </label>
                 <div className="relative">
                   <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
@@ -301,7 +333,9 @@ export default function HotelsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Budget Range</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Budget Range
+                </label>
                 <select
                   value={budgetRange}
                   onChange={(e) => setBudgetRange(e.target.value)}
@@ -354,20 +388,27 @@ export default function HotelsPage() {
                   </div>
                   <h3 className="font-display text-2xl text-foreground">Query Submitted</h3>
                   <p className="text-sm text-muted-foreground">
-                    Our hotel concierge is contacting local properties in <span className="font-semibold">{destination}</span> to arrange offline negotiated room tariffs. We will contact you soon.
+                    Our hotel concierge is contacting local properties in{" "}
+                    <span className="font-semibold">{destination}</span> to arrange offline
+                    negotiated room tariffs. We will contact you soon.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <h3 className="font-display text-2xl text-foreground">Request Offline Room Rates</h3>
+                    <h3 className="font-display text-2xl text-foreground">
+                      Request Offline Room Rates
+                    </h3>
                     <p className="text-sm text-muted-foreground">
-                      We secure private luxury inventory and inclusions (spa vouchers, champagne check-in) not published on regular online sites.
+                      We secure private luxury inventory and inclusions (spa vouchers, champagne
+                      check-in) not published on regular online sites.
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Your Name</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Your Name
+                      </label>
                       <input
                         type="text"
                         required
@@ -378,7 +419,9 @@ export default function HotelsPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">WhatsApp Number</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        WhatsApp Number
+                      </label>
                       <input
                         type="tel"
                         required
@@ -389,7 +432,9 @@ export default function HotelsPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Email Address</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Email Address
+                      </label>
                       <input
                         type="email"
                         required
@@ -439,7 +484,8 @@ export default function HotelsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Tailored Stays</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              We align hotel rooms directly with your specific preferences, budgets, safety guidelines, and accessibility constraints.
+              We align hotel rooms directly with your specific preferences, budgets, safety
+              guidelines, and accessibility constraints.
             </p>
           </div>
 
@@ -449,7 +495,8 @@ export default function HotelsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Wide Selection</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              A meticulously cataloged inventory of over 200,000+ top-tier resorts, central boutique spots, and suites globally.
+              A meticulously cataloged inventory of over 200,000+ top-tier resorts, central boutique
+              spots, and suites globally.
             </p>
           </div>
 
@@ -459,7 +506,8 @@ export default function HotelsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Exclusive Deals</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Negotiated industry offline contracts that grant breakfast inclusions, complimentary spa, and early check-ins.
+              Negotiated industry offline contracts that grant breakfast inclusions, complimentary
+              spa, and early check-ins.
             </p>
           </div>
 
@@ -469,7 +517,8 @@ export default function HotelsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Global Reach</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Book with absolute security and confidence across more than 100+ countries, backed by 24/7 on-trip assistance.
+              Book with absolute security and confidence across more than 100+ countries, backed by
+              24/7 on-trip assistance.
             </p>
           </div>
         </div>
@@ -482,18 +531,20 @@ export default function HotelsPage() {
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               Elite Network
             </span>
-            <h2 className="font-display text-3xl text-foreground">
-              Our Premium Hotel Services
-            </h2>
+            <h2 className="font-display text-3xl text-foreground">Our Premium Hotel Services</h2>
             <p className="text-sm text-muted-foreground">
-              We work in direct coordination with leading global hospitality chains to assure flawless comfort.
+              We work in direct coordination with leading global hospitality chains to assure
+              flawless comfort.
             </p>
           </div>
 
           {/* Brands list */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             {brands.map((b) => (
-              <div key={b} className="p-6 rounded-2xl border border-border bg-card font-display text-lg text-muted-foreground shadow-sm hover:text-primary transition-colors">
+              <div
+                key={b}
+                className="p-6 rounded-2xl border border-border bg-card font-display text-lg text-muted-foreground shadow-sm hover:text-primary transition-colors"
+              >
                 {b}
               </div>
             ))}
@@ -502,15 +553,22 @@ export default function HotelsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
             <div className="p-6 bg-card border border-border rounded-3xl shadow-sm text-center">
               <h4 className="font-display text-base text-foreground mb-1">Room Upgrades</h4>
-              <p className="text-xs text-muted-foreground">Enjoy complimentary spatial updates and personalized amenities at select properties.</p>
+              <p className="text-xs text-muted-foreground">
+                Enjoy complimentary spatial updates and personalized amenities at select properties.
+              </p>
             </div>
             <div className="p-6 bg-card border border-border rounded-3xl shadow-sm text-center">
               <h4 className="font-display text-base text-foreground mb-1">Flexible Bookings</h4>
-              <p className="text-xs text-muted-foreground">Alter or cancel stays with immediate response and minimal paperwork hurdles.</p>
+              <p className="text-xs text-muted-foreground">
+                Alter or cancel stays with immediate response and minimal paperwork hurdles.
+              </p>
             </div>
             <div className="p-6 bg-card border border-border rounded-3xl shadow-sm text-center">
               <h4 className="font-display text-base text-foreground mb-1">24/7 Assistance</h4>
-              <p className="text-xs text-muted-foreground">No bots or automated ticketing. Text our concierge desk to coordinate early arrivals or transfers.</p>
+              <p className="text-xs text-muted-foreground">
+                No bots or automated ticketing. Text our concierge desk to coordinate early arrivals
+                or transfers.
+              </p>
             </div>
           </div>
         </div>
@@ -535,7 +593,11 @@ export default function HotelsPage() {
                     className="w-full flex items-center justify-between text-left font-display text-lg text-foreground py-2 focus:outline-none"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp className="h-5 w-5 text-primary" /> : <ChevronDown className="h-5 w-5 text-muted-foreground" />}
+                    {isOpen ? (
+                      <ChevronUp className="h-5 w-5 text-primary" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    )}
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -582,14 +644,17 @@ export default function HotelsPage() {
                   "{testimonials[testIdx].quote}"
                 </p>
                 <div className="text-sm text-white/70">
-                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> · {testimonials[testIdx].trip}
+                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> ·{" "}
+                  {testimonials[testIdx].trip}
                 </div>
               </motion.div>
             </AnimatePresence>
 
             <div className="flex gap-2 mt-8">
               <button
-                onClick={() => setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                onClick={() =>
+                  setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+                }
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white transition hover:bg-white/10"
               >
                 <ChevronLeft className="h-4 w-4" />

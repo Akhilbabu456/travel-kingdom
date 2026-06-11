@@ -1,7 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
-export function Counter({ value, decimals = 0, suffix = "", duration = 1800 }: { value: number; decimals?: number; suffix?: string; duration?: number }) {
+export function Counter({
+  value,
+  decimals = 0,
+  suffix = "",
+  duration = 1800,
+}: {
+  value: number;
+  decimals?: number;
+  suffix?: string;
+  duration?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [n, setN] = useState(0);
@@ -20,7 +30,10 @@ export function Counter({ value, decimals = 0, suffix = "", duration = 1800 }: {
   }, [inView, value, duration]);
   return (
     <span ref={ref}>
-      {n.toLocaleString("en-IN", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
+      {n.toLocaleString("en-IN", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      })}
       {suffix}
     </span>
   );

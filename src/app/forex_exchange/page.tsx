@@ -27,22 +27,28 @@ import {
 // Forex Page Hero Slides matching the live website
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Unbeatable Rates",
     title: "Unbeatable Forex\nRates Worldwide",
-    subtitle: "Get the best exchange rates for 40+ global currencies with quick and transparent transactions.",
+    subtitle:
+      "Get the best exchange rates for 40+ global currencies with quick and transparent transactions.",
   },
   {
-    image: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Travel Confident",
     title: "Travel Confident\nwith Trusted Forex",
-    subtitle: "Secure your money abroad with our safe, reliable, and hassle-free currency exchange service.",
+    subtitle:
+      "Secure your money abroad with our safe, reliable, and hassle-free currency exchange service.",
   },
   {
-    image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Multi-Currency Card",
     title: "Multi-Currency\nMade Simple",
-    subtitle: "From USD and EUR to Yen and Dirham, we provide fast and competitive forex assistance tailored for travelers.",
+    subtitle:
+      "From USD and EUR to Yen and Dirham, we provide fast and competitive forex assistance tailored for travelers.",
   },
 ];
 
@@ -70,19 +76,22 @@ const testimonials = [
     name: "Ketan Jadhav",
     rating: 5,
     trip: "Doorstep Currency Delivery",
-    quote: "Very competitive exchange rates compared to the leading banks. Got my USD delivered directly to my home in Pune on the same day. The entire process was completely transparent, safe, and professional.",
+    quote:
+      "Very competitive exchange rates compared to the leading banks. Got my USD delivered directly to my home in Pune on the same day. The entire process was completely transparent, safe, and professional.",
   },
   {
     name: "Ritu Malhotra",
     rating: 5,
     trip: "Emergency Euro Exchange",
-    quote: "Needed Euros urgently for my sudden Europe trip. Travel Kingdom arranged the cash within hours and delivered it right at my doorstep. Their team is highly professional, and their service is flawless.",
+    quote:
+      "Needed Euros urgently for my sudden Europe trip. Travel Kingdom arranged the cash within hours and delivered it right at my doorstep. Their team is highly professional, and their service is flawless.",
   },
   {
     name: "Aditya Verma",
     rating: 5,
     trip: "Prepaid Travel Card",
-    quote: "I always get my travel forex through Travel Kingdom. They consistently offer the best conversion rates in town, and their multi-currency travel card is incredibly convenient to use for international swipe payments.",
+    quote:
+      "I always get my travel forex through Travel Kingdom. They consistently offer the best conversion rates in town, and their multi-currency travel card is incredibly convenient to use for international swipe payments.",
   },
 ];
 
@@ -162,8 +171,8 @@ export default function ForexPage() {
         delivery_preference: deliveryPref,
         assistance_type: assistanceType,
         travel_date: travelDate || null,
-        travel_destination: null
-      }
+        travel_destination: null,
+      },
     });
 
     setSubmitting(false);
@@ -240,24 +249,34 @@ export default function ForexPage() {
                 type="button"
                 onClick={() => setTransactionType("buy")}
                 className={`text-sm font-semibold pb-2 transition-all relative ${
-                  transactionType === "buy" ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  transactionType === "buy"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 Buy Forex (Get Foreign Cash)
                 {transactionType === "buy" && (
-                  <motion.div layoutId="forexTypeUnderline" className="absolute bottom-0 inset-x-0 h-0.5 bg-primary" />
+                  <motion.div
+                    layoutId="forexTypeUnderline"
+                    className="absolute bottom-0 inset-x-0 h-0.5 bg-primary"
+                  />
                 )}
               </button>
               <button
                 type="button"
                 onClick={() => setTransactionType("sell")}
                 className={`text-sm font-semibold pb-2 transition-all relative ${
-                  transactionType === "sell" ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  transactionType === "sell"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 Sell Forex (Get INR Cash)
                 {transactionType === "sell" && (
-                  <motion.div layoutId="forexTypeUnderline" className="absolute bottom-0 inset-x-0 h-0.5 bg-primary" />
+                  <motion.div
+                    layoutId="forexTypeUnderline"
+                    className="absolute bottom-0 inset-x-0 h-0.5 bg-primary"
+                  />
                 )}
               </button>
             </div>
@@ -265,7 +284,9 @@ export default function ForexPage() {
             {/* Inputs Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Currency</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Currency
+                </label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
@@ -283,7 +304,9 @@ export default function ForexPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Foreign Amount</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Foreign Amount
+                </label>
                 <input
                   type="number"
                   required
@@ -295,14 +318,18 @@ export default function ForexPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Approx. Value in INR</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Approx. Value in INR
+                </label>
                 <div className="w-full px-4 py-3 rounded-2xl border border-border bg-muted/50 text-sm font-semibold text-foreground">
                   ₹ {totalINR.toLocaleString()} INR
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Travel Date</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Travel Date
+                </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -319,7 +346,9 @@ export default function ForexPage() {
             {/* Dropdowns row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Delivery Preference</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Delivery Preference
+                </label>
                 <div className="relative">
                   <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
@@ -334,7 +363,9 @@ export default function ForexPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Assistance Category</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Assistance Category
+                </label>
                 <select
                   value={assistanceType}
                   onChange={(e) => setAssistanceType(e.target.value)}
@@ -385,20 +416,30 @@ export default function ForexPage() {
                   </div>
                   <h3 className="font-display text-2xl text-foreground">Forex Order Registered</h3>
                   <p className="text-sm text-muted-foreground">
-                    Our verified courier manager is preparing the doorstep cash package of <span className="font-semibold">{currencyRates[currency].symbol}{amount} {currency}</span>. We'll connect on WhatsApp.
+                    Our verified courier manager is preparing the doorstep cash package of{" "}
+                    <span className="font-semibold">
+                      {currencyRates[currency].symbol}
+                      {amount} {currency}
+                    </span>
+                    . We'll connect on WhatsApp.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <h3 className="font-display text-2xl text-foreground">Finalize Your Exchange</h3>
+                    <h3 className="font-display text-2xl text-foreground">
+                      Finalize Your Exchange
+                    </h3>
                     <p className="text-sm text-muted-foreground">
-                      In compliance with FEMA regulations, foreign exchange requires a copy of your passport, air ticket, and valid visa. We handle this securely.
+                      In compliance with FEMA regulations, foreign exchange requires a copy of your
+                      passport, air ticket, and valid visa. We handle this securely.
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Your Name</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Your Name
+                      </label>
                       <input
                         type="text"
                         required
@@ -409,7 +450,9 @@ export default function ForexPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">WhatsApp / Contact</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        WhatsApp / Contact
+                      </label>
                       <input
                         type="tel"
                         required
@@ -420,7 +463,9 @@ export default function ForexPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Email Address</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Email Address
+                      </label>
                       <input
                         type="email"
                         required
@@ -437,9 +482,25 @@ export default function ForexPage() {
                     >
                       {submitting ? (
                         <>
-                          <svg className="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin h-5 w-5 text-current"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Submitting...
                         </>
@@ -476,7 +537,8 @@ export default function ForexPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Competitive Rates</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Some of the most competitive exchange rates in town, completely transparent with zero hidden fees.
+              Some of the most competitive exchange rates in town, completely transparent with zero
+              hidden fees.
             </p>
           </div>
 
@@ -486,7 +548,8 @@ export default function ForexPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Doorstep Delivery</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Highly secure doorstep currency delivery or loaded multi-currency card delivery directly to your home.
+              Highly secure doorstep currency delivery or loaded multi-currency card delivery
+              directly to your home.
             </p>
           </div>
 
@@ -496,7 +559,8 @@ export default function ForexPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Strictly Secure</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              All transactions are strictly authorized under FEMA regulations, offering secure currency handling.
+              All transactions are strictly authorized under FEMA regulations, offering secure
+              currency handling.
             </p>
           </div>
 
@@ -506,7 +570,8 @@ export default function ForexPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">24/7 Support</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Emergency assistance for card blocking, ATM withdrawals, and extra loads while you travel abroad.
+              Emergency assistance for card blocking, ATM withdrawals, and extra loads while you
+              travel abroad.
             </p>
           </div>
         </div>
@@ -531,25 +596,29 @@ export default function ForexPage() {
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Currency Notes</h4>
               <p className="text-sm text-muted-foreground">
-                Exchange physical currency cash for 40+ countries. Clean, verified notes delivered immediately.
+                Exchange physical currency cash for 40+ countries. Clean, verified notes delivered
+                immediately.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Multi-Currency Card</h4>
               <p className="text-sm text-muted-foreground">
-                Load up to 16 global currencies on a single card. Zero swipe charges at merchant terminals worldwide.
+                Load up to 16 global currencies on a single card. Zero swipe charges at merchant
+                terminals worldwide.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Travel Insurance</h4>
               <p className="text-sm text-muted-foreground">
-                Comprehensive overseas medical cover, baggage delay, and flight cancellation safety guarantees.
+                Comprehensive overseas medical cover, baggage delay, and flight cancellation safety
+                guarantees.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Emergency Loads</h4>
               <p className="text-sm text-muted-foreground">
-                Run short of funds abroad? WhatsApp our desk, pay in INR locally, and we load your card within 30 minutes.
+                Run short of funds abroad? WhatsApp our desk, pay in INR locally, and we load your
+                card within 30 minutes.
               </p>
             </div>
           </div>
@@ -575,7 +644,11 @@ export default function ForexPage() {
                     className="w-full flex items-center justify-between text-left font-display text-lg text-foreground py-2 focus:outline-none"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp className="h-5 w-5 text-primary" /> : <ChevronDown className="h-5 w-5 text-muted-foreground" />}
+                    {isOpen ? (
+                      <ChevronUp className="h-5 w-5 text-primary" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    )}
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -622,14 +695,17 @@ export default function ForexPage() {
                   "{testimonials[testIdx].quote}"
                 </p>
                 <div className="text-sm text-white/70">
-                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> · {testimonials[testIdx].trip}
+                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> ·{" "}
+                  {testimonials[testIdx].trip}
                 </div>
               </motion.div>
             </AnimatePresence>
 
             <div className="flex gap-2 mt-8">
               <button
-                onClick={() => setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                onClick={() =>
+                  setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+                }
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white transition hover:bg-white/10"
               >
                 <ChevronLeft className="h-4 w-4" />

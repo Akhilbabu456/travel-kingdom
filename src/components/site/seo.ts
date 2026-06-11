@@ -1,4 +1,9 @@
-export function head(opts: { title: string; description: string; canonical?: string; image?: string }) {
+export function head(opts: {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+}) {
   const t = `${opts.title} | Travel Kingdom`;
   return () => ({
     meta: [

@@ -47,7 +47,9 @@ export default function PrivacyPage() {
         <div className="space-y-12">
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p className="text-base text-muted-foreground leading-relaxed">
-              At Travel Kingdom, protecting your personal data is a foundational value. This policy governs how we collect, handle, and secure information provided by you on our site or directly to our consultants at our Pune office.
+              At Travel Kingdom, protecting your personal data is a foundational value. This policy
+              governs how we collect, handle, and secure information provided by you on our site or
+              directly to our consultants at our Pune office.
             </p>
           </div>
 
@@ -78,9 +80,12 @@ export default function PrivacyPage() {
           </div>
 
           <div className="rounded-3xl bg-muted/50 p-6 text-center border border-border">
-            <h4 className="font-display text-lg text-foreground mb-2">Your Privacy Questions Answered</h4>
+            <h4 className="font-display text-lg text-foreground mb-2">
+              Your Privacy Questions Answered
+            </h4>
             <p className="text-xs text-muted-foreground max-w-md mx-auto mb-4">
-              If you have any questions about how your passport copies are handled or would like to request data deletion, contact our privacy desk.
+              If you have any questions about how your passport copies are handled or would like to
+              request data deletion, contact our privacy desk.
             </p>
             <a
               href="/contact"

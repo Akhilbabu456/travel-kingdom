@@ -1,4 +1,4 @@
-// File: C:\Users\akhil\Downloads\travel-kingdom\src\app\packages\[slug]\page.tsx
+// File: C:\Users\rgrak\travel-kingdom\src\app\packages\[slug]\page.tsx
 import * as entry from '../../../../../src/app/packages/[slug]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

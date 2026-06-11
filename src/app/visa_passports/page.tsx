@@ -27,16 +27,20 @@ import {
 // Visa Page Hero Slides matching the live website
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Fast & Reliable",
     title: "Fast & Reliable\nVisa Services",
-    subtitle: "Simplify your travel plans with our expert visa consultants. From documentation to approval, we ensure a smooth and stress-free process.",
+    subtitle:
+      "Simplify your travel plans with our expert visa consultants. From documentation to approval, we ensure a smooth and stress-free process.",
   },
   {
-    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Passport Assistance",
     title: "Passport Assistance\nMade Easy",
-    subtitle: "From fresh applications to hassle-free renewals, our dedicated team takes care of every detail for your passport needs.",
+    subtitle:
+      "From fresh applications to hassle-free renewals, our dedicated team takes care of every detail for your passport needs.",
   },
 ];
 
@@ -64,19 +68,22 @@ const testimonials = [
     name: "Shweta Rane",
     rating: 5,
     trip: "Schengen Visa Approval",
-    quote: "Applied for my Schengen visa through Travel Kingdom. They guided me thoroughly on the complicated financial documentation, arranged early biometrics appointments, and I got the visa within a week without any hassle. Exceptional guidance!",
+    quote:
+      "Applied for my Schengen visa through Travel Kingdom. They guided me thoroughly on the complicated financial documentation, arranged early biometrics appointments, and I got the visa within a week without any hassle. Exceptional guidance!",
   },
   {
     name: "Ramesh Choudhary",
     rating: 5,
     trip: "Urgent Passport Renewal",
-    quote: "I had to renew my passport urgently for an unexpected business trip. Travel Kingdom helped me with the complete paperwork, Tatkaal application, and immediate appointment booking. Received my passport at home in record time.",
+    quote:
+      "I had to renew my passport urgently for an unexpected business trip. Travel Kingdom helped me with the complete paperwork, Tatkaal application, and immediate appointment booking. Received my passport at home in record time.",
   },
   {
     name: "Aditya Roy",
     rating: 5,
     trip: "UK Visa Support",
-    quote: "Highly professional UK visa assistance. The team gave crystal-clear instructions, cross-checked all our bank logs and employment letters, and kept us constantly updated. Really reassuring service throughout.",
+    quote:
+      "Highly professional UK visa assistance. The team gave crystal-clear instructions, cross-checked all our bank logs and employment letters, and kept us constantly updated. Really reassuring service throughout.",
   },
 ];
 
@@ -131,9 +138,13 @@ export default function VisaPage() {
         nationality: nationality,
         destination_country: destination,
         visa_type: visaType.toLowerCase().replace(" ", "") as any,
-        passport_status: passportStatus.toLowerCase().includes("valid") ? "valid" : passportStatus.toLowerCase().includes("expired") ? "expired" : "not_issued" as any,
-        travel_date: travelDate
-      }
+        passport_status: passportStatus.toLowerCase().includes("valid")
+          ? "valid"
+          : passportStatus.toLowerCase().includes("expired")
+            ? "expired"
+            : ("not_issued" as any),
+        travel_date: travelDate,
+      },
     });
 
     setSubmitting(false);
@@ -207,7 +218,9 @@ export default function VisaPage() {
             {/* Inputs Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Nationality</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Nationality
+                </label>
                 <div className="relative">
                   <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -222,7 +235,9 @@ export default function VisaPage() {
               </div>
 
               <div className="space-y-2 lg:col-span-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Destination Country</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Destination Country
+                </label>
                 <div className="relative">
                   <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -237,7 +252,9 @@ export default function VisaPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Travel Date</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Travel Date
+                </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -254,7 +271,9 @@ export default function VisaPage() {
             {/* Dropdowns row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Visa Category</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Visa Category
+                </label>
                 <div className="relative">
                   <FileText className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
@@ -271,7 +290,9 @@ export default function VisaPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Current Passport Status</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Current Passport Status
+                </label>
                 <select
                   value={passportStatus}
                   onChange={(e) => setPassportStatus(e.target.value)}
@@ -323,20 +344,27 @@ export default function VisaPage() {
                   </div>
                   <h3 className="font-display text-2xl text-foreground">Inquiry Logged</h3>
                   <p className="text-sm text-muted-foreground">
-                    Our certified visa consultant is checking slot availability for <span className="font-semibold">{destination}</span> visa submissions. We'll contact you within a business hour.
+                    Our certified visa consultant is checking slot availability for{" "}
+                    <span className="font-semibold">{destination}</span> visa submissions. We'll
+                    contact you within a business hour.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <h3 className="font-display text-2xl text-foreground">Speak with a Visa Specialist</h3>
+                    <h3 className="font-display text-2xl text-foreground">
+                      Speak with a Visa Specialist
+                    </h3>
                     <p className="text-sm text-muted-foreground">
-                      Avoid expensive application rejections. We cross-verify checklists, pre-fill embassy portals, and arrange biometrics slots securely.
+                      Avoid expensive application rejections. We cross-verify checklists, pre-fill
+                      embassy portals, and arrange biometrics slots securely.
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Your Name</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Your Name
+                      </label>
                       <input
                         type="text"
                         required
@@ -347,7 +375,9 @@ export default function VisaPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">WhatsApp Mobile</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        WhatsApp Mobile
+                      </label>
                       <input
                         type="tel"
                         required
@@ -358,7 +388,9 @@ export default function VisaPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Email Address</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Email Address
+                      </label>
                       <input
                         type="email"
                         required
@@ -375,9 +407,25 @@ export default function VisaPage() {
                     >
                       {submitting ? (
                         <>
-                          <svg className="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin h-5 w-5 text-current"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Submitting...
                         </>
@@ -414,7 +462,8 @@ export default function VisaPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Expert Guidance</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Our seasoned consultants specialize in embassy rules, financial checklists, and interview preparation to assure success.
+              Our seasoned consultants specialize in embassy rules, financial checklists, and
+              interview preparation to assure success.
             </p>
           </div>
 
@@ -424,7 +473,8 @@ export default function VisaPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Wide Coverage</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Visa processing across 50+ sovereign countries, Schengen sticker permits, and immediate digital e-visas.
+              Visa processing across 50+ sovereign countries, Schengen sticker permits, and
+              immediate digital e-visas.
             </p>
           </div>
 
@@ -434,7 +484,8 @@ export default function VisaPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Secure Handling</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              All passports, financial records, bank statements, and biometric logins are kept strictly confidential.
+              All passports, financial records, bank statements, and biometric logins are kept
+              strictly confidential.
             </p>
           </div>
 
@@ -444,7 +495,8 @@ export default function VisaPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Fast Processing</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Direct and expedited booking profiles for emergency applications, family tours, and business biometrics.
+              Direct and expedited booking profiles for emergency applications, family tours, and
+              business biometrics.
             </p>
           </div>
         </div>
@@ -469,25 +521,29 @@ export default function VisaPage() {
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Visa Application</h4>
               <p className="text-sm text-muted-foreground">
-                We handle the complete online form filling, embassy slot bookings, fee transactions, and cover letter drafts.
+                We handle the complete online form filling, embassy slot bookings, fee transactions,
+                and cover letter drafts.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Passport Concierge</h4>
               <p className="text-sm text-muted-foreground">
-                Hassle-free filing for fresh passports, Tatkaal renewals, address updates, name corrections, and minor profiles.
+                Hassle-free filing for fresh passports, Tatkaal renewals, address updates, name
+                corrections, and minor profiles.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Document Audit</h4>
               <p className="text-sm text-muted-foreground">
-                Meticulous audit of financial credentials, flight/hotel bookings, bank drafts, and letters to assure zero faults.
+                Meticulous audit of financial credentials, flight/hotel bookings, bank drafts, and
+                letters to assure zero faults.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Interview Prep</h4>
               <p className="text-sm text-muted-foreground">
-                Mock question drills and structural guidelines for US, UK, and Schengen visa consular interviews.
+                Mock question drills and structural guidelines for US, UK, and Schengen visa
+                consular interviews.
               </p>
             </div>
           </div>
@@ -513,7 +569,11 @@ export default function VisaPage() {
                     className="w-full flex items-center justify-between text-left font-display text-lg text-foreground py-2 focus:outline-none"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp className="h-5 w-5 text-primary" /> : <ChevronDown className="h-5 w-5 text-muted-foreground" />}
+                    {isOpen ? (
+                      <ChevronUp className="h-5 w-5 text-primary" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    )}
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -560,14 +620,17 @@ export default function VisaPage() {
                   "{testimonials[testIdx].quote}"
                 </p>
                 <div className="text-sm text-white/70">
-                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> · {testimonials[testIdx].trip}
+                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> ·{" "}
+                  {testimonials[testIdx].trip}
                 </div>
               </motion.div>
             </AnimatePresence>
 
             <div className="flex gap-2 mt-8">
               <button
-                onClick={() => setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                onClick={() =>
+                  setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+                }
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white transition hover:bg-white/10"
               >
                 <ChevronLeft className="h-4 w-4" />

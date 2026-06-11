@@ -64,7 +64,10 @@ export default function BlogPage() {
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 className="group flex flex-col overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] overflow-hidden block">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="relative aspect-[16/10] overflow-hidden block"
+                >
                   <img
                     src={post.image}
                     alt={post.title}
@@ -86,9 +89,7 @@ export default function BlogPage() {
                   </div>
 
                   <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors leading-snug">
-                    <Link href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
 
                   <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed flex-grow">
@@ -103,7 +104,9 @@ export default function BlogPage() {
                         className="h-8 w-8 rounded-full object-cover border border-border"
                       />
                       <div>
-                        <div className="text-xs font-semibold text-foreground">{post.author.name}</div>
+                        <div className="text-xs font-semibold text-foreground">
+                          {post.author.name}
+                        </div>
                         <div className="text-[10px] text-muted-foreground">{post.author.role}</div>
                       </div>
                     </div>
@@ -130,7 +133,8 @@ export default function BlogPage() {
             <BookOpen className="h-10 w-10 text-primary mx-auto" />
             <h2 className="font-display text-3xl text-white">Need a detailed destination guide?</h2>
             <p className="text-sm text-white/70 max-w-md mx-auto">
-              Our travel specialists have maps, checklist documents, and offline guides for over 50+ countries. Get in touch to schedule a boutique call.
+              Our travel specialists have maps, checklist documents, and offline guides for over 50+
+              countries. Get in touch to schedule a boutique call.
             </p>
             <Link
               href="/contact"

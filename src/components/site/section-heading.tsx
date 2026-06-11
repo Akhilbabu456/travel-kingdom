@@ -18,11 +18,7 @@ export function SectionHeading({
         <h2 className="mt-3 font-display text-3xl leading-tight text-foreground sm:text-4xl">
           {title}
         </h2>
-        {sub && (
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            {sub}
-          </p>
-        )}
+        {sub && <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{sub}</p>}
       </Reveal>
     </div>
   );

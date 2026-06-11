@@ -25,33 +25,34 @@ export default function Page() {
   }, []);
 
   const list = useMemo(() => {
-    return destinations.filter((d) =>
-      (cat === "All" || d.category === cat) &&
-      (q === "" || 
-       d.name.toLowerCase().includes(q.toLowerCase()) || 
-       d.country.toLowerCase().includes(q.toLowerCase()))
+    return destinations.filter(
+      (d) =>
+        (cat === "All" || d.category === cat) &&
+        (q === "" ||
+          d.name.toLowerCase().includes(q.toLowerCase()) ||
+          d.country.toLowerCase().includes(q.toLowerCase())),
     );
   }, [destinations, cat, q]);
 
   return (
     <PageShell>
-      <PageHero 
-        eyebrow="Destinations" 
-        title="An Atlas of Escapes" 
-        sub="Hand-picked places we'd happily revisit — sorted by mood, not marketing." 
-        image="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1920&q=80" 
+      <PageHero
+        eyebrow="Destinations"
+        title="An Atlas of Escapes"
+        sub="Hand-picked places we'd happily revisit — sorted by mood, not marketing."
+        image="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1920&q=80"
       />
-      
+
       <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-2">
             {cats.map((c) => (
-              <button 
-                key={c} 
-                onClick={() => setCat(c)} 
+              <button
+                key={c}
+                onClick={() => setCat(c)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                  cat === c 
-                    ? "bg-primary text-primary-foreground shadow-glow" 
+                  cat === c
+                    ? "bg-primary text-primary-foreground shadow-glow"
                     : "border border-border bg-card text-foreground/80 hover:border-primary hover:text-primary"
                 }`}
               >
@@ -61,11 +62,11 @@ export default function Page() {
           </div>
           <div className="relative w-full lg:w-80">
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <input 
-              value={q} 
-              onChange={(e) => setQ(e.target.value)} 
-              placeholder="Search destinations..." 
-              className="w-full rounded-full border border-border bg-card py-3 pl-11 pr-4 text-sm outline-none focus:border-primary" 
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search destinations..."
+              className="w-full rounded-full border border-border bg-card py-3 pl-11 pr-4 text-sm outline-none focus:border-primary"
             />
           </div>
         </div>
@@ -86,12 +87,16 @@ export default function Page() {
               ))}
             </Stagger>
             {list.length === 0 && (
-              <p className="mt-12 text-center text-muted-foreground">No destinations match your search.</p>
+              <p className="mt-12 text-center text-muted-foreground">
+                No destinations match your search.
+              </p>
             )}
           </>
         )}
       </section>
-      <div className="pb-24"><Newsletter /></div>
+      <div className="pb-24">
+        <Newsletter />
+      </div>
     </PageShell>
   );
 }

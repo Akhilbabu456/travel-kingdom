@@ -26,8 +26,8 @@ export default function ContactPage() {
         subject: `Custom Tour Planning to ${form.dest}`,
         service_type: "custom_tour",
         number_of_people: 1,
-        preferred_date: null
-      }
+        preferred_date: null,
+      },
     });
     setSubmitting(false);
     if (success) {
@@ -78,7 +78,6 @@ export default function ContactPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          
           {/* Left Column: Info Cards */}
           <div className="space-y-6 lg:col-span-5">
             <div className="space-y-4">
@@ -89,7 +88,8 @@ export default function ContactPage() {
                 Visit Our Pune Boutique or Reach Out Anytime
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Whether you need advice on complex visas, corporate retreats, custom honeymoon arrangements, or instant forex, our specialists are ready to guide you.
+                Whether you need advice on complex visas, corporate retreats, custom honeymoon
+                arrangements, or instant forex, our specialists are ready to guide you.
               </p>
             </div>
 
@@ -131,8 +131,10 @@ export default function ContactPage() {
           {/* Right Column: Inquiry Form */}
           <div className="lg:col-span-7">
             <div className="rounded-[2rem] border border-border bg-card p-6 sm:p-10 shadow-luxe">
-              <h3 className="font-display text-2xl text-foreground mb-6">Plan Your Custom Journey</h3>
-              
+              <h3 className="font-display text-2xl text-foreground mb-6">
+                Plan Your Custom Journey
+              </h3>
+
               {sent ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -142,9 +144,12 @@ export default function ContactPage() {
                   <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                     <CheckCircle2 className="h-10 w-10" />
                   </div>
-                  <h4 className="font-display text-xl text-foreground">Inquiry Sent Successfully!</h4>
+                  <h4 className="font-display text-xl text-foreground">
+                    Inquiry Sent Successfully!
+                  </h4>
                   <p className="mt-2 text-sm text-muted-foreground max-w-sm">
-                    Thank you for reaching out. A Travel Kingdom holiday designer will contact you within the next 2 hours.
+                    Thank you for reaching out. A Travel Kingdom holiday designer will contact you
+                    within the next 2 hours.
                   </p>
                   <button
                     onClick={() => setSent(false)}
@@ -157,7 +162,12 @@ export default function ContactPage() {
                 <form onSubmit={onSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-1">
-                      <label htmlFor="name" className="text-xs font-semibold text-muted-foreground uppercase">Your Name</label>
+                      <label
+                        htmlFor="name"
+                        className="text-xs font-semibold text-muted-foreground uppercase"
+                      >
+                        Your Name
+                      </label>
                       <input
                         id="name"
                         type="text"
@@ -169,7 +179,12 @@ export default function ContactPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label htmlFor="email" className="text-xs font-semibold text-muted-foreground uppercase">Email Address</label>
+                      <label
+                        htmlFor="email"
+                        className="text-xs font-semibold text-muted-foreground uppercase"
+                      >
+                        Email Address
+                      </label>
                       <input
                         id="email"
                         type="email"
@@ -184,7 +199,12 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-1">
-                      <label htmlFor="phone" className="text-xs font-semibold text-muted-foreground uppercase">Phone Number</label>
+                      <label
+                        htmlFor="phone"
+                        className="text-xs font-semibold text-muted-foreground uppercase"
+                      >
+                        Phone Number
+                      </label>
                       <input
                         id="phone"
                         type="tel"
@@ -196,7 +216,12 @@ export default function ContactPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label htmlFor="dest" className="text-xs font-semibold text-muted-foreground uppercase">Dream Destination</label>
+                      <label
+                        htmlFor="dest"
+                        className="text-xs font-semibold text-muted-foreground uppercase"
+                      >
+                        Dream Destination
+                      </label>
                       <input
                         id="dest"
                         type="text"
@@ -210,7 +235,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-1">
-                    <label htmlFor="msg" className="text-xs font-semibold text-muted-foreground uppercase">Tell us about your trip plans</label>
+                    <label
+                      htmlFor="msg"
+                      className="text-xs font-semibold text-muted-foreground uppercase"
+                    >
+                      Tell us about your trip plans
+                    </label>
                     <textarea
                       id="msg"
                       rows={4}
@@ -228,9 +258,25 @@ export default function ContactPage() {
                   >
                     {submitting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <svg
+                          className="animate-spin h-5 w-5 text-current"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
                         </svg>
                         Sending...
                       </>
@@ -244,7 +290,6 @@ export default function ContactPage() {
               )}
             </div>
           </div>
-
         </div>
       </section>
 
@@ -266,7 +311,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <div className="pb-24"><Newsletter /></div>
+      <div className="pb-24">
+        <Newsletter />
+      </div>
     </PageShell>
   );
 }

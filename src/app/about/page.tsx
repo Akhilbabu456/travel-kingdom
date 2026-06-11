@@ -64,10 +64,16 @@ export default function AboutPage() {
               Crafting Premium Holidays That Linger in Memory
             </h2>
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              At **Travel Kingdom**, we believe that travel is not just about visiting new coordinates; it is about absolute freedom. Established in 2011 in Pune by Rohit Kumar Gupta, we have spent over a decade shifting the travel booking experience from an automated chore to a cinematic, tailored art.
+              At **Travel Kingdom**, we believe that travel is not just about visiting new
+              coordinates; it is about absolute freedom. Established in 2011 in Pune by Rohit Kumar
+              Gupta, we have spent over a decade shifting the travel booking experience from an
+              automated chore to a cinematic, tailored art.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Whether you are planning a romantic overwater villa stay in the Maldives, an Ayurvedic retreat in Kerala, an Alpine train journey through Switzerland, or a dynamic desert getaway in Dubai, our seasoned travel designers handle every single detail—flights, premium lodging, transfers, and activities—with uncompromising care.
+              Whether you are planning a romantic overwater villa stay in the Maldives, an Ayurvedic
+              retreat in Kerala, an Alpine train journey through Switzerland, or a dynamic desert
+              getaway in Dubai, our seasoned travel designers handle every single detail—flights,
+              premium lodging, transfers, and activities—with uncompromising care.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row pt-4">
               <div className="flex items-center gap-3">
@@ -75,7 +81,9 @@ export default function AboutPage() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-muted-foreground uppercase font-semibold">Headquartered in</div>
+                  <div className="text-xs text-muted-foreground uppercase font-semibold">
+                    Headquartered in
+                  </div>
                   <div className="text-sm font-semibold text-foreground">Pune, Maharashtra</div>
                 </div>
               </div>
@@ -84,7 +92,9 @@ export default function AboutPage() {
                   <Users className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-muted-foreground uppercase font-semibold">Founder & Director</div>
+                  <div className="text-xs text-muted-foreground uppercase font-semibold">
+                    Founder & Director
+                  </div>
                   <div className="text-sm font-semibold text-foreground">Rohit Kumar Gupta</div>
                 </div>
               </div>
@@ -167,7 +177,8 @@ export default function AboutPage() {
               <Star className="h-5 w-5 fill-current" />
             </div>
             <blockquote className="font-display text-2xl sm:text-3xl leading-relaxed italic">
-              "We take the burden of complex logistics off your shoulders, replacing it with the simple, pure joy of exploration. Our promise is 'From Concern to Freedom'."
+              "We take the burden of complex logistics off your shoulders, replacing it with the
+              simple, pure joy of exploration. Our promise is 'From Concern to Freedom'."
             </blockquote>
             <cite className="block text-sm uppercase tracking-wider text-white/80 font-semibold not-italic">
               — Rohit Kumar Gupta, Founder
@@ -176,7 +187,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="pb-24"><Newsletter /></div>
+      <div className="pb-24">
+        <Newsletter />
+      </div>
     </PageShell>
   );
 }

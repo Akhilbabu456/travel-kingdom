@@ -89,7 +89,11 @@ export default function BlogDetailPage({ params }: PageProps) {
 
         {/* Feature Hero Image */}
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2.5rem] border border-border shadow-luxe mb-12">
-          <img src={post.image} alt={post.title} className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={post.image}
+            alt={post.title}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
 
         {/* Article Body Content */}
@@ -135,9 +139,13 @@ export default function BlogDetailPage({ params }: PageProps) {
           />
           <div className="space-y-2 text-center sm:text-left">
             <h4 className="font-display text-lg text-foreground">{post.author.name}</h4>
-            <p className="text-xs font-semibold text-primary uppercase tracking-wider">{post.author.role}</p>
+            <p className="text-xs font-semibold text-primary uppercase tracking-wider">
+              {post.author.role}
+            </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Alka and our holiday designers have over a decade of destination expertise. We assist travelers in Pune in selecting premium resorts, designing bespoke day plans, and configuring visa checklists.
+              Alka and our holiday designers have over a decade of destination expertise. We assist
+              travelers in Pune in selecting premium resorts, designing bespoke day plans, and
+              configuring visa checklists.
             </p>
           </div>
         </div>
@@ -149,7 +157,8 @@ export default function BlogDetailPage({ params }: PageProps) {
             <Heart className="h-8 w-8 text-primary-foreground mx-auto fill-current" />
             <h3 className="font-display text-2xl sm:text-3xl text-white">Inspired to travel?</h3>
             <p className="text-sm text-white/80 max-w-md mx-auto">
-              Our travel specialists will map out a custom, stress-free itinerary based on this article. Get a quotation.
+              Our travel specialists will map out a custom, stress-free itinerary based on this
+              article. Get a quotation.
             </p>
             <Link
               href="/contact"
@@ -165,14 +174,19 @@ export default function BlogDetailPage({ params }: PageProps) {
       {related.length > 0 && (
         <section className="bg-muted/40 py-20 border-t border-border">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
-            <h3 className="font-display text-2xl text-foreground text-center mb-12">Related Articles</h3>
+            <h3 className="font-display text-2xl text-foreground text-center mb-12">
+              Related Articles
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {related.map((rPost) => (
                 <div
                   key={rPost.slug}
                   className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <Link href={`/blog/${rPost.slug}`} className="relative aspect-[16/10] overflow-hidden block">
+                  <Link
+                    href={`/blog/${rPost.slug}`}
+                    className="relative aspect-[16/10] overflow-hidden block"
+                  >
                     <img
                       src={rPost.image}
                       alt={rPost.title}
@@ -184,16 +198,17 @@ export default function BlogDetailPage({ params }: PageProps) {
                   </Link>
                   <div className="p-5 space-y-3 flex-grow flex flex-col justify-between">
                     <h4 className="font-display text-lg text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
-                      <Link href={`/blog/${rPost.slug}`}>
-                        {rPost.title}
-                      </Link>
+                      <Link href={`/blog/${rPost.slug}`}>{rPost.title}</Link>
                     </h4>
                     <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                       {rPost.excerpt}
                     </p>
                     <div className="flex items-center justify-between border-t border-border pt-4 mt-2 text-[10px] text-muted-foreground">
                       <span>{rPost.date}</span>
-                      <Link href={`/blog/${rPost.slug}`} className="text-primary font-semibold hover:underline">
+                      <Link
+                        href={`/blog/${rPost.slug}`}
+                        className="text-primary font-semibold hover:underline"
+                      >
                         Read Article →
                       </Link>
                     </div>

@@ -40,32 +40,40 @@ export default function PastToursPage() {
       title: "Cinematic Honeymoon in the Maldives",
       client: "Pooja & Sameer Mehta",
       location: "Maldives (Centara Grand Resort)",
-      image: "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=800&q=80",
-      quote: "From the sunset villa upgrade to private beach dinners, Travel Kingdom managed everything. Our concierge desk answered us instantly on WhatsApp throughout the trip.",
+      image:
+        "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=800&q=80",
+      quote:
+        "From the sunset villa upgrade to private beach dinners, Travel Kingdom managed everything. Our concierge desk answered us instantly on WhatsApp throughout the trip.",
       rating: 5,
     },
     {
       title: "Alpine Adventure through Switzerland",
       client: "Deshpande Family (4 Adults)",
       location: "Switzerland (Zurich, Zermatt, Interlaken)",
-      image: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=800&q=80",
-      quote: "Travelling with senior citizens is always stressful, but Rohit's team made it easy. Wheelchair support, direct transfers, and stays right next to train stations were perfect.",
+      image:
+        "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=800&q=80",
+      quote:
+        "Travelling with senior citizens is always stressful, but Rohit's team made it easy. Wheelchair support, direct transfers, and stays right next to train stations were perfect.",
       rating: 5,
     },
     {
       title: "Hidden Gems & Cultural Escape",
       client: "Meera & Rahul Sen",
       location: "Bhutan (Thimphu, Paro Valley)",
-      image: "https://images.unsplash.com/photo-1548263599-9fb1557d99cd?auto=format&fit=crop&w=800&q=80",
-      quote: "Tiger's Nest was a dream come true. The guide provided by Travel Kingdom was knowledgeable, and our premium hotel bookings in Paro exceeded all expectations.",
+      image:
+        "https://images.unsplash.com/photo-1548263599-9fb1557d99cd?auto=format&fit=crop&w=800&q=80",
+      quote:
+        "Tiger's Nest was a dream come true. The guide provided by Travel Kingdom was knowledgeable, and our premium hotel bookings in Paro exceeded all expectations.",
       rating: 5,
     },
     {
       title: "Corporate Retreat in Dubai",
       client: "Vertex Solutions (30 Pax)",
       location: "Dubai (Atlantis The Palm)",
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
-      quote: " Flawless corporate offsite coordination. Flights, conference bookings, yacht dinners, and desert safaris were managed punctually. Exceptional professionalism.",
+      image:
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
+      quote:
+        " Flawless corporate offsite coordination. Flights, conference bookings, yacht dinners, and desert safaris were managed punctually. Exceptional professionalism.",
       rating: 5,
     },
   ];
@@ -84,7 +92,9 @@ export default function PastToursPage() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 rounded-[2rem] border border-border bg-card/90 shadow-luxe backdrop-blur-xl p-6 sm:p-8">
           {stats.map((st) => (
             <div key={st.label} className="text-center p-2">
-              <div className="font-display text-3xl sm:text-4xl text-primary font-semibold">{st.value}</div>
+              <div className="font-display text-3xl sm:text-4xl text-primary font-semibold">
+                {st.value}
+              </div>
               <div className="text-[11px] font-semibold text-muted-foreground uppercase mt-2 tracking-wider">
                 {st.label}
               </div>
@@ -99,9 +109,12 @@ export default function PastToursPage() {
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             <Camera className="h-4 w-4" /> Traveller Galleries
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl text-foreground">Stories From the Field</h2>
+          <h2 className="font-display text-3xl sm:text-4xl text-foreground">
+            Stories From the Field
+          </h2>
           <p className="text-muted-foreground">
-            A small glimpse into real travel logs, custom highlights, and reviews shared by our happy clients.
+            A small glimpse into real travel logs, custom highlights, and reviews shared by our
+            happy clients.
           </p>
         </div>
 
@@ -141,7 +154,9 @@ export default function PastToursPage() {
                 </blockquote>
                 <div className="flex items-center justify-between border-t border-border pt-4 text-xs font-semibold">
                   <span className="text-foreground">{story.client}</span>
-                  <span className="text-muted-foreground flex items-center gap-1">Verified Stay <Heart className="h-3.5 w-3.5 text-primary fill-primary" /></span>
+                  <span className="text-muted-foreground flex items-center gap-1">
+                    Verified Stay <Heart className="h-3.5 w-3.5 text-primary fill-primary" />
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -153,7 +168,6 @@ export default function PastToursPage() {
       <section className="bg-muted/40 py-24 border-y border-border">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
             <div className="lg:col-span-5 space-y-6">
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
                 <Award className="h-4 w-4" /> Recognitions
@@ -162,15 +176,21 @@ export default function PastToursPage() {
                 20+ Prestigious Awards & Accolades
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Since our inception in 2011, Travel Kingdom has been consistently recognized by travel forums and consular services for operational excellence, high visa safety, and client retention.
+                Since our inception in 2011, Travel Kingdom has been consistently recognized by
+                travel forums and consular services for operational excellence, high visa safety,
+                and client retention.
               </p>
               <div className="inline-flex gap-4 items-center p-4 rounded-2xl bg-card border border-border">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
                   <Users className="h-6 w-6" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-foreground">12,000+ Journeys Curated</div>
-                  <div className="text-xs text-muted-foreground">Trusted by families, honeymooners and groups</div>
+                  <div className="text-sm font-semibold text-foreground">
+                    12,000+ Journeys Curated
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Trusted by families, honeymooners and groups
+                  </div>
                 </div>
               </div>
             </div>
@@ -190,16 +210,19 @@ export default function PastToursPage() {
                   </div>
                   <div className="space-y-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-display text-lg text-foreground leading-tight">{aw.title}</h3>
+                      <h3 className="font-display text-lg text-foreground leading-tight">
+                        {aw.title}
+                      </h3>
                       <span className="text-xs font-bold text-primary shrink-0">{aw.year}</span>
                     </div>
                     <div className="text-xs text-muted-foreground font-medium">{aw.issuer}</div>
-                    <p className="text-xs text-muted-foreground/80 leading-relaxed mt-2">{aw.desc}</p>
+                    <p className="text-xs text-muted-foreground/80 leading-relaxed mt-2">
+                      {aw.desc}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
-
           </div>
         </div>
       </section>
@@ -208,7 +231,8 @@ export default function PastToursPage() {
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 text-center space-y-6">
         <h2 className="font-display text-3xl text-foreground">Travelled with us recently?</h2>
         <p className="text-muted-foreground max-w-md mx-auto">
-          Share your holiday review and photos to help other Pune families plan their stress-free dream escapes.
+          Share your holiday review and photos to help other Pune families plan their stress-free
+          dream escapes.
         </p>
         <a
           href="/feedback"

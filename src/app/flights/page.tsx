@@ -27,22 +27,28 @@ import {
 // Flight page Hero slides matching the live website themes
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Smart Travel",
     title: "Fly Smart with\nAffordable Airfares",
-    subtitle: "Discover unbeatable flight deals worldwide – from budget-friendly economy to premium luxury.",
+    subtitle:
+      "Discover unbeatable flight deals worldwide – from budget-friendly economy to premium luxury.",
   },
   {
-    image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Personal Choice",
     title: "Your Journey,\nYour Choice",
-    subtitle: "Choose from top global airlines with flexible options that suit your personal travel style.",
+    subtitle:
+      "Choose from top global airlines with flexible options that suit your personal travel style.",
   },
   {
-    image: "https://images.unsplash.com/photo-1483450388369-9ed95738483c?auto=format&fit=crop&w=1920&q=80",
+    image:
+      "https://images.unsplash.com/photo-1483450388369-9ed95738483c?auto=format&fit=crop&w=1920&q=80",
     eyebrow: "Zero Stress",
     title: "Stress-Free\nFlight Booking",
-    subtitle: "Enjoy seamless reservations, real-time airfare updates, and secure booking for domestic and international travel.",
+    subtitle:
+      "Enjoy seamless reservations, real-time airfare updates, and secure booking for domestic and international travel.",
   },
 ];
 
@@ -70,19 +76,22 @@ const testimonials = [
     name: "Rohan Deshmukh",
     rating: 5,
     trip: "Business Class to London",
-    quote: "Booked our business class flights to Travel Kingdom. The booking process was seamless, and the pricing was notably better than any online portals. Truly professional and premium service!",
+    quote:
+      "Booked our business class flights to Travel Kingdom. The booking process was seamless, and the pricing was notably better than any online portals. Truly professional and premium service!",
   },
   {
     name: "Ananya Sen",
     rating: 5,
     trip: "Family Trip to USA",
-    quote: "Travel Kingdom managed our multi-city family trip to the USA. They coordinated all seat preferences, special meals, and kid-friendly connections. Their team made a complex schedule feel entirely effortless.",
+    quote:
+      "Travel Kingdom managed our multi-city family trip to the USA. They coordinated all seat preferences, special meals, and kid-friendly connections. Their team made a complex schedule feel entirely effortless.",
   },
   {
     name: "Manish Shah",
     rating: 5,
     trip: "Domestic Leisure",
-    quote: "We had our flight cancelled due to weather, and the Travel Kingdom team had us rebooked on the next available flight within 15 minutes before the airport counter could even process the line. Unbelievable support!",
+    quote:
+      "We had our flight cancelled due to weather, and the Travel Kingdom team had us rebooked on the next available flight within 15 minutes before the airport counter could even process the line. Unbelievable support!",
   },
 ];
 
@@ -144,8 +153,8 @@ export default function FlightsPage() {
         travelers: parseInt(passengers) || 1,
         travel_class: classType.toLowerCase().replace(" ", "") as any,
         special_fare: specialFare.toLowerCase() as any,
-        trip_type: tripType
-      }
+        trip_type: tripType,
+      },
     });
 
     setSubmitting(false);
@@ -224,24 +233,34 @@ export default function FlightsPage() {
                 type="button"
                 onClick={() => setTripType("roundtrip")}
                 className={`text-sm font-semibold pb-2 transition-all relative ${
-                  tripType === "roundtrip" ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  tripType === "roundtrip"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 Round Trip
                 {tripType === "roundtrip" && (
-                  <motion.div layoutId="tripTypeUnderline" className="absolute bottom-0 inset-x-0 h-0.5 bg-primary" />
+                  <motion.div
+                    layoutId="tripTypeUnderline"
+                    className="absolute bottom-0 inset-x-0 h-0.5 bg-primary"
+                  />
                 )}
               </button>
               <button
                 type="button"
                 onClick={() => setTripType("oneway")}
                 className={`text-sm font-semibold pb-2 transition-all relative ${
-                  tripType === "oneway" ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  tripType === "oneway"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 One Way
                 {tripType === "oneway" && (
-                  <motion.div layoutId="tripTypeUnderline" className="absolute bottom-0 inset-x-0 h-0.5 bg-primary" />
+                  <motion.div
+                    layoutId="tripTypeUnderline"
+                    className="absolute bottom-0 inset-x-0 h-0.5 bg-primary"
+                  />
                 )}
               </button>
             </div>
@@ -249,7 +268,9 @@ export default function FlightsPage() {
             {/* Inputs Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">From</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  From
+                </label>
                 <div className="relative">
                   <Plane className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -279,7 +300,9 @@ export default function FlightsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Depart Date</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Depart Date
+                </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -293,7 +316,9 @@ export default function FlightsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Return Date</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Return Date
+                </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -311,7 +336,9 @@ export default function FlightsPage() {
             {/* Dropdowns row */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Travelers</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Travelers
+                </label>
                 <div className="relative">
                   <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
@@ -329,7 +356,9 @@ export default function FlightsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Cabin Class</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Cabin Class
+                </label>
                 <select
                   value={classType}
                   onChange={(e) => setClassType(e.target.value)}
@@ -343,7 +372,9 @@ export default function FlightsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-foreground uppercase">Special Fare</label>
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Special Fare
+                </label>
                 <select
                   value={specialFare}
                   onChange={(e) => setSpecialFare(e.target.value)}
@@ -395,7 +426,11 @@ export default function FlightsPage() {
                   </div>
                   <h3 className="font-display text-2xl text-foreground">Inquiry Received</h3>
                   <p className="text-sm text-muted-foreground">
-                    Our flight concierge is searching custom fares for <span className="font-semibold">{from} to {to}</span>. We'll WhatsApp or call you shortly.
+                    Our flight concierge is searching custom fares for{" "}
+                    <span className="font-semibold">
+                      {from} to {to}
+                    </span>
+                    . We'll WhatsApp or call you shortly.
                   </p>
                 </div>
               ) : (
@@ -403,12 +438,15 @@ export default function FlightsPage() {
                   <div className="space-y-2">
                     <h3 className="font-display text-2xl text-foreground">Get Private Airfares</h3>
                     <p className="text-sm text-muted-foreground">
-                      We have access to negotiated corporate rates not shown online. Leave your details and get custom bookings.
+                      We have access to negotiated corporate rates not shown online. Leave your
+                      details and get custom bookings.
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Your Name</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Your Name
+                      </label>
                       <input
                         type="text"
                         required
@@ -419,7 +457,9 @@ export default function FlightsPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Mobile / WhatsApp</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Mobile / WhatsApp
+                      </label>
                       <input
                         type="tel"
                         required
@@ -430,7 +470,9 @@ export default function FlightsPage() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase">Email Address</label>
+                      <label className="text-xs font-semibold text-muted-foreground uppercase">
+                        Email Address
+                      </label>
                       <input
                         type="email"
                         required
@@ -480,7 +522,8 @@ export default function FlightsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Personalized Service</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Our travel specialists handcraft flights, connecting times, and airline classes tailored directly to your desires.
+              Our travel specialists handcraft flights, connecting times, and airline classes
+              tailored directly to your desires.
             </p>
           </div>
 
@@ -490,7 +533,8 @@ export default function FlightsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Wide Range of Options</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Direct and multi-city options spanning Economy, Premium Economy, Business, and luxurious First-Class flights.
+              Direct and multi-city options spanning Economy, Premium Economy, Business, and
+              luxurious First-Class flights.
             </p>
           </div>
 
@@ -500,7 +544,8 @@ export default function FlightsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Special Fares</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Access to exclusive, private airfares, student specials, senior discounts, and military concessions.
+              Access to exclusive, private airfares, student specials, senior discounts, and
+              military concessions.
             </p>
           </div>
 
@@ -510,7 +555,8 @@ export default function FlightsPage() {
             </div>
             <h3 className="font-display text-xl text-foreground">Global Reach</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Direct alignments and ticketing with top-tier airlines covering over 100+ destinations worldwide.
+              Direct alignments and ticketing with top-tier airlines covering over 100+ destinations
+              worldwide.
             </p>
           </div>
         </div>
@@ -535,25 +581,29 @@ export default function FlightsPage() {
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Trusted Partners</h4>
               <p className="text-sm text-muted-foreground">
-                Ticketing directly with premium partners including Emirates, Qatar Airways, Singapore Airlines, and Air India.
+                Ticketing directly with premium partners including Emirates, Qatar Airways,
+                Singapore Airlines, and Air India.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">In-Flight Luxury</h4>
               <p className="text-sm text-muted-foreground">
-                Pre-book extra legroom, hot gourmet meals, inflight Wi-Fi configurations, and premium lounges.
+                Pre-book extra legroom, hot gourmet meals, inflight Wi-Fi configurations, and
+                premium lounges.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">Flexible Booking</h4>
               <p className="text-sm text-muted-foreground">
-                Easy date changes, refund policies, and cancellations managed proactively by our office.
+                Easy date changes, refund policies, and cancellations managed proactively by our
+                office.
               </p>
             </div>
             <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h4 className="font-display text-lg text-foreground mb-2">24/7 Concierge</h4>
               <p className="text-sm text-muted-foreground">
-                Instant personal WhatsApp concierge to assist with check-in, delays, or boarding emergencies.
+                Instant personal WhatsApp concierge to assist with check-in, delays, or boarding
+                emergencies.
               </p>
             </div>
           </div>
@@ -579,7 +629,11 @@ export default function FlightsPage() {
                     className="w-full flex items-center justify-between text-left font-display text-lg text-foreground py-2 focus:outline-none"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp className="h-5 w-5 text-primary" /> : <ChevronDown className="h-5 w-5 text-muted-foreground" />}
+                    {isOpen ? (
+                      <ChevronUp className="h-5 w-5 text-primary" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                    )}
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
@@ -626,14 +680,17 @@ export default function FlightsPage() {
                   "{testimonials[testIdx].quote}"
                 </p>
                 <div className="text-sm text-white/70">
-                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> · {testimonials[testIdx].trip}
+                  <span className="font-semibold text-white">{testimonials[testIdx].name}</span> ·{" "}
+                  {testimonials[testIdx].trip}
                 </div>
               </motion.div>
             </AnimatePresence>
 
             <div className="flex gap-2 mt-8">
               <button
-                onClick={() => setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                onClick={() =>
+                  setTestIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+                }
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white transition hover:bg-white/10"
               >
                 <ChevronLeft className="h-4 w-4" />

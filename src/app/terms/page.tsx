@@ -53,7 +53,9 @@ export default function TermsPage() {
         <div className="space-y-12">
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p className="text-base text-muted-foreground leading-relaxed">
-              Welcome to Travel Kingdom. These Terms and Conditions outline the rules and regulations for the use of our services, both online and at our travel boutique in Pune. By using our website and services, we assume you accept these terms in full.
+              Welcome to Travel Kingdom. These Terms and Conditions outline the rules and
+              regulations for the use of our services, both online and at our travel boutique in
+              Pune. By using our website and services, we assume you accept these terms in full.
             </p>
           </div>
 
@@ -84,9 +86,12 @@ export default function TermsPage() {
           </div>
 
           <div className="rounded-3xl bg-muted/50 p-6 text-center border border-border">
-            <h4 className="font-display text-lg text-foreground mb-2">Have questions about our terms?</h4>
+            <h4 className="font-display text-lg text-foreground mb-2">
+              Have questions about our terms?
+            </h4>
             <p className="text-xs text-muted-foreground max-w-md mx-auto mb-4">
-              Get in touch with our operations team in Pune to clarify any questions regarding booking policies, deposits, or insurance.
+              Get in touch with our operations team in Pune to clarify any questions regarding
+              booking policies, deposits, or insurance.
             </p>
             <a
               href="/contact"

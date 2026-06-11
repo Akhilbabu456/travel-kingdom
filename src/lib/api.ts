@@ -1,4 +1,4 @@
-import { destinations as staticDestinations, packages as staticPackages, type Destination, type Package } from "./data";
+import { type Destination, type Package } from "./data";
 export type { Destination, Package };
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://engine.travelkingdom.in";
@@ -65,35 +65,199 @@ export interface ApiTheme {
 
 // Convert ApiLocation to Destination
 export function mapLocationToDestination(loc: ApiLocation): Destination {
+  const nameLower = loc.name.toLowerCase();
+  const countryLower = (loc.country || "").toLowerCase();
+  const regionLower = (loc.region || "").toLowerCase();
+
+  // Determine region dynamically
+  let region: Destination["region"] = "Asia";
+  if (countryLower === "india") {
+    region = "India";
+  } else if (
+    regionLower.includes("europe") ||
+    countryLower.includes("united kingdom") ||
+    countryLower.includes("england") ||
+    countryLower.includes("ireland") ||
+    countryLower.includes("france") ||
+    countryLower.includes("greece")
+  ) {
+    region = "Europe";
+  } else if (
+    regionLower.includes("middle east") ||
+    countryLower.includes("uae") ||
+    countryLower.includes("united arab emirates") ||
+    countryLower.includes("dubai") ||
+    countryLower.includes("egypt")
+  ) {
+    region = "Middle East";
+  } else if (
+    regionLower.includes("america") ||
+    countryLower.includes("united states") ||
+    countryLower.includes("usa") ||
+    countryLower.includes("canada")
+  ) {
+    region = "The Americas";
+  }
+
+  // Determine category dynamically
+  let category: Destination["category"] = "Beach";
+  if (
+    nameLower.includes("maldives") ||
+    nameLower.includes("seychelles") ||
+    nameLower.includes("bali") ||
+    nameLower.includes("beach") ||
+    nameLower.includes("goa") ||
+    nameLower.includes("alleppey") ||
+    nameLower.includes("alappuzha") ||
+    nameLower.includes("port blair") ||
+    nameLower.includes("andaman")
+  ) {
+    category = "Beach";
+  } else if (
+    nameLower.includes("bhutan") ||
+    nameLower.includes("shimla") ||
+    nameLower.includes("manali") ||
+    nameLower.includes("leh") ||
+    nameLower.includes("ladakh") ||
+    nameLower.includes("srinagar") ||
+    nameLower.includes("kashmir") ||
+    nameLower.includes("pelling") ||
+    nameLower.includes("dalhousie")
+  ) {
+    category = "Mountain";
+  } else if (
+    nameLower.includes("dubai") ||
+    nameLower.includes("london") ||
+    nameLower.includes("paris") ||
+    nameLower.includes("singapore") ||
+    nameLower.includes("new york") ||
+    nameLower.includes("abu dhabi") ||
+    nameLower.includes("edinburgh")
+  ) {
+    category = "City";
+  } else if (
+    nameLower.includes("delhi") ||
+    nameLower.includes("agra") ||
+    nameLower.includes("jaipur") ||
+    nameLower.includes("rajasthan") ||
+    nameLower.includes("gwalior") ||
+    nameLower.includes("temple") ||
+    nameLower.includes("puri") ||
+    nameLower.includes("amritsar")
+  ) {
+    category = "Heritage";
+  } else if (loc.package_count > 6) {
+    category = "Honeymoon";
+  } else {
+    category = "Hidden Gems";
+  }
+
   return {
-    slug: loc.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
-    name: loc.name.charAt(0).toUpperCase() + loc.name.slice(1).toLowerCase(),
+    slug: loc.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, ""),
+    name: loc.name
+      .split(" ")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(" "),
     country: loc.country || "International",
-    region: (loc.region as any) || "Asia",
-    category: loc.package_count > 5 ? "Honeymoon" : "Beach",
-    image: loc.image || "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=800&q=80",
-    tagline: `Explore ${loc.package_count} curated tour packages`,
-    fromPrice: 29000, // placeholder from price if API doesn't specify
-    nights: 4
+    region: region,
+    category: category,
+    image:
+      loc.image ||
+      "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=800&q=80",
+    tagline: `Explore ${loc.package_count} curated tour packages in ${loc.name}`,
+    fromPrice: undefined,
+    nights: 4,
   };
 }
 
 // Convert ApiPackage to Package
 export function mapApiPackageToPackage(pkg: ApiPackage): Package {
-  const price = pkg.cost?.cost || 45000;
+  const price = pkg.cost?.cost || undefined;
+
+  // Heuristic mapping for Package categories based on title/destination
+  const t = pkg.title.toLowerCase();
+  const d = pkg.destinations.join(", ").toLowerCase();
+
+  let category: Package["category"] = "Luxury"; // default category
+
+  if (
+    t.includes("romantic") ||
+    t.includes("honeymoon") ||
+    d.includes("maldives") ||
+    d.includes("seychelles") ||
+    t.includes("couple")
+  ) {
+    category = "Honeymoon";
+  } else if (
+    t.includes("bhutan") ||
+    t.includes("ladakh") ||
+    t.includes("leh") ||
+    t.includes("himalaya") ||
+    t.includes("hike") ||
+    t.includes("trek") ||
+    t.includes("adventure") ||
+    d.includes("paro") ||
+    t.includes("nepal")
+  ) {
+    category = "Adventure";
+  } else if (
+    t.includes("thailand") ||
+    t.includes("singapore") ||
+    t.includes("dubai") ||
+    t.includes("australia") ||
+    t.includes("city") ||
+    t.includes("wonders") ||
+    t.includes("splendors") ||
+    t.includes("family")
+  ) {
+    category = "Family";
+  } else if (
+    t.includes("wayanad") ||
+    t.includes("meghalaya") ||
+    t.includes("sikkim") ||
+    t.includes("darjeeling") ||
+    t.includes("karnataka") ||
+    t.includes("coorg") ||
+    t.includes("ooty") ||
+    t.includes("kerala")
+  ) {
+    category = "Hidden Gems";
+  } else if (
+    t.includes("temple") ||
+    t.includes("divine") ||
+    t.includes("heritage") ||
+    t.includes("gujarat") ||
+    t.includes("madhya pradesh") ||
+    t.includes("group") ||
+    t.includes("delight")
+  ) {
+    category = "Group";
+  }
+
   return {
     slug: pkg.slug,
-    title: pkg.title.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' '), // Capitalize words
+    title: pkg.title
+      .split(" ")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(" "), // Capitalize words
     destination: pkg.destinations.join(", "),
-    image: (pkg.images && pkg.images.length > 0) ? pkg.images[0] : "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80",
+    image:
+      pkg.images && pkg.images.length > 0
+        ? pkg.images[0]
+        : "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80",
     nights: pkg.duration,
     days: pkg.duration + 1,
     price: price,
     oldPrice: price ? Math.round(price * 1.25) : undefined,
     rating: 4.8,
     reviews: 120 + (pkg.id % 200),
-    category: (pkg.category as any) || "Luxury",
-    highlights: pkg.itineraries.flatMap(it => it.sightseeings.map(s => s.title)).slice(0, 4)
+    category: category,
+    highlights: Array.from(
+      new Set(pkg.itineraries.flatMap((it) => (it.sightseeings || []).map((s) => s.title))),
+    ).slice(0, 4),
   };
 }
 
@@ -103,12 +267,19 @@ export async function fetchLocations(): Promise<Destination[]> {
     if (!res.ok) throw new Error("API call failed");
     const data: ApiLocation[] = await res.json();
     // Filter out locations with 0 packages
-    const activeLocs = data.filter(l => l.package_count > 0);
-    if (activeLocs.length === 0) return staticDestinations;
-    return activeLocs.map(mapLocationToDestination);
+    const activeLocs = data.filter((l) => l.package_count > 0);
+    const mapped = activeLocs.map(mapLocationToDestination);
+
+    // Deduplicate by slug
+    const seen = new Set<string>();
+    return mapped.filter((d) => {
+      if (seen.has(d.slug)) return false;
+      seen.add(d.slug);
+      return true;
+    });
   } catch (error) {
-    console.warn("fetchLocations failed, using static fallback:", error);
-    return staticDestinations;
+    console.error("fetchLocations failed:", error);
+    return [];
   }
 }
 
@@ -132,80 +303,19 @@ export async function fetchPackages(filters?: {
     if (!res.ok) throw new Error("API call failed");
     const data = await res.json();
     const pkgs: ApiPackage[] = data.packages || [];
-    if (pkgs.length === 0) return staticPackages;
-    return pkgs.map(mapApiPackageToPackage);
-  } catch (error) {
-    console.warn("fetchPackages failed, using static fallback:", error);
-    return staticPackages;
-  }
-}
+    const mapped = pkgs.map(mapApiPackageToPackage);
 
-function getStaticPackageAsApiPackage(slug: string): ApiPackage | null {
-  let staticPkg = staticPackages.find((p) => p.slug === slug);
-
-  if (!staticPkg) {
-    const s = slug.toLowerCase();
-    if (s.includes("maldives")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("maldives"));
-    } else if (s.includes("bhutan")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("bhutan"));
-    } else if (s.includes("bali")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("bali"));
-    } else if (s.includes("dubai")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("dubai"));
-    } else if (s.includes("santorini") || s.includes("greece")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("santorini"));
-    } else if (s.includes("paris") || s.includes("france")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("paris"));
-    } else if (s.includes("swiss") || s.includes("switzerland")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("swiss"));
-    } else if (s.includes("rajasthan")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("rajasthan"));
-    } else if (s.includes("kerala") || s.includes("wayanad") || s.includes("munnar") || s.includes("backwaters")) {
-      staticPkg = staticPackages.find((p) => p.slug.includes("kerala"));
-    }
-  }
-
-  // Final fallback to first package if still no match
-  if (!staticPkg) {
-    staticPkg = staticPackages[0];
-  }
-
-  if (!staticPkg) return null;
-
-  const itineraries: ApiItineraryDay[] = [];
-  for (let i = 1; i <= staticPkg.days; i++) {
-    itineraries.push({
-      id: i,
-      day_number: i,
-      title: i === 1 ? "Arrival & Leisure" : i === staticPkg.days ? "Departure" : `Sightseeing Tour in ${staticPkg.destination}`,
-      description: i === 1
-        ? `Arrive in ${staticPkg.destination}. Meet our representative and transfer to your pre-booked premium stay. Rest of the day is at leisure.`
-        : i === staticPkg.days
-        ? `Breakfast at your hotel. Check out and transfer to the airport for your onward flight home with wonderful memories.`
-        : `After breakfast, proceed for a guided sightseeing tour. Visit top local attractions, scenic photography viewpoints, and experience local culture.`,
-      meal: ["Breakfast"],
-      sightseeings: staticPkg.highlights.map((h) => ({ title: h, city: staticPkg.destination }))
+    // Deduplicate by slug
+    const seen = new Set<string>();
+    return mapped.filter((p) => {
+      if (seen.has(p.slug)) return false;
+      seen.add(p.slug);
+      return true;
     });
+  } catch (error) {
+    console.error("fetchPackages failed:", error);
+    return [];
   }
-
-  return {
-    id: 9999 + staticPackages.indexOf(staticPkg),
-    title: staticPkg.title,
-    slug: staticPkg.slug,
-    overview: `Experience a premium, hand-crafted tour of ${staticPkg.destination} featuring top highlights such as ${staticPkg.highlights.join(", ")}. Enjoy curated dining and high-end stays.`,
-    destinations: [staticPkg.destination],
-    duration: staticPkg.nights,
-    images: [staticPkg.image],
-    cost: {
-      cost: staticPkg.price,
-      symbol: "₹",
-      basis: "per person"
-    },
-    itineraries: itineraries,
-    inclusions: staticPkg.highlights.join("\n"),
-    exclusions: "Any personal expenses, extra meals, and travel insurance."
-  };
 }
 
 export async function fetchPackageBySlug(slug: string): Promise<ApiPackage | null> {
@@ -213,10 +323,10 @@ export async function fetchPackageBySlug(slug: string): Promise<ApiPackage | nul
     const res = await fetch(`${API_BASE_URL}/packages/${slug}`);
     if (!res.ok) throw new Error("API call failed");
     const data = await res.json();
-    return data.package || getStaticPackageAsApiPackage(slug);
+    return data.package || null;
   } catch (error) {
-    console.warn(`fetchPackageBySlug ${slug} failed, using static fallback:`, error);
-    return getStaticPackageAsApiPackage(slug);
+    console.error(`fetchPackageBySlug ${slug} failed:`, error);
+    return null;
   }
 }
 
