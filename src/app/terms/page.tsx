@@ -3,7 +3,18 @@
 import { motion } from "framer-motion";
 import { PageShell, PageHero } from "@/components/site/page-shell";
 import { Newsletter } from "@/components/site/newsletter";
-import { Scale, FileText, ShieldAlert, Coins, HelpCircle } from "lucide-react";
+import {
+  Scale,
+  FileText,
+  ShieldAlert,
+  Coins,
+  HelpCircle,
+  Calendar,
+  RefreshCw,
+  Clock,
+  Share2,
+  AlertTriangle,
+} from "lucide-react";
 import heroImg from "@/assets/hero-kerala.jpg";
 
 export default function TermsPage() {
@@ -27,14 +38,44 @@ export default function TermsPage() {
         "Payment schedules and deposit requirements vary by tour and will be communicated at the time of booking. Cancellation charges depend directly on airline, hotel, and supplier policies. Any cancellation requests must be submitted in writing. Travel Kingdom reserves the right to charge reasonable administrative service fees for modifications.",
     },
     {
+      icon: Calendar,
+      title: "4. Prepone / Postpone Rescheduling Notice",
+      content:
+        "In case you wish to prepone or postpone your travel dates, we request you to kindly notify us in writing (via email or SMS) at least fifteen (15) days prior to the journey date.",
+    },
+    {
+      icon: RefreshCw,
+      title: "5. Free Reschedule Policy & Supplier Charges",
+      content:
+        "Customers can prepone or postpone their tour once without any additional Travel Kingdom administrative charges, provided it is notified 15 days before the travel date in writing. Subsequent changes will attract additional fees. Please note that third-party service providers (such as hoteliers or transporters) may still apply their own postponement charges, which will be deducted from your advance payment.",
+    },
+    {
+      icon: AlertTriangle,
+      title: "6. Availability, Pricing & Last-Minute Changes",
+      content:
+        "In all rescheduling scenarios, final services and pricing depend on the availability of hotels, transport, and the seasonal context (peak/off-season rates). We do not accept any voluntary plan changes within 15 days of the travel date. However, in rare circumstances like natural calamities or strikes, we may allow rescheduling and will notify you accordingly.",
+    },
+    {
+      icon: Clock,
+      title: "7. Payment Validity",
+      content:
+        "Your advance payment remains valid for exactly one (1) year from the date of payment for approved prepone/postpone scenarios.",
+    },
+    {
+      icon: Share2,
+      title: "8. Booking Transferability",
+      content:
+        "The advance payment and invoice number are fully transferable. You may pass your booking details and credits to friends or relatives, provided all of the above notification timelines and terms are met.",
+    },
+    {
       icon: ShieldAlert,
-      title: "4. Passports, Visas & Consular Approvals",
+      title: "9. Passports, Visas & Consular Approvals",
       content:
         "Travelers are solely responsible for possessing passports valid for at least six (6) months beyond their return date, along with all necessary visas, health certificates, and permits. Travel Kingdom acts strictly as an assistance provider for visas and is not liable for embassy delays, rejections, or consular decisions.",
     },
     {
       icon: HelpCircle,
-      title: "5. Limitations of Liability & Disclaimers",
+      title: "10. Limitations of Liability & Disclaimers",
       content:
         "Travel Kingdom acts as an agent for airlines, hotels, transport operators, and local activity suppliers. We are not liable for injury, loss, damage, delay, or expense resulting from circumstances beyond our control (force majeure), including weather disruptions, strikes, political unrest, or supplier insolvencies.",
     },

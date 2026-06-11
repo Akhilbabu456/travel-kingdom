@@ -164,7 +164,7 @@ export default function ForexPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "forex_exchange_assistance",
-      message: `Forex Enquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.`,
+      message: `Forex Inquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.`,
       forex: {
         currency: currency,
         amount: parseFloat(amount) || 0,
@@ -188,7 +188,7 @@ export default function ForexPage() {
         setInquirerEmail("");
       }, 4000);
     } else {
-      alert("Failed to submit enquiry. Please check your details and try again.");
+      alert("Failed to submit inquiry. Please check your details and try again.");
     }
   };
 

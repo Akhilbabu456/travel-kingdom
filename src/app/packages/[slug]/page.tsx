@@ -73,7 +73,7 @@ export default function Page({ params }: PageProps) {
       email: email,
       phone: phone,
       inquiry_type: "package",
-      message: `Enquiry for package: ${pkg.title} (${pkg.duration} Nights). Travelers: ${travelers}`,
+      message: `Inquiry for package: ${pkg.title} (${pkg.duration} Nights). Travelers: ${travelers}`,
       package: {
         package_id: String(pkg.id),
         travelers: parseInt(travelers) || 2,
@@ -272,7 +272,7 @@ export default function Page({ params }: PageProps) {
                     Exclusive Offer
                   </div>
                   <div className="font-display text-2xl leading-snug text-foreground">
-                    Enquire Now to Unlock the Best Deals
+                    Inquire Now to Unlock the Best Deals
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
                     Contact us for private rates and offline resort tariffs.
@@ -291,7 +291,7 @@ export default function Page({ params }: PageProps) {
                     className="text-center py-6 space-y-3 bg-emerald-50/50 rounded-2xl border border-emerald-100 p-4"
                   >
                     <CheckCircle2 className="h-8 w-8 text-emerald-600 mx-auto" />
-                    <h5 className="font-semibold text-emerald-950 text-sm">Enquiry Submitted!</h5>
+                    <h5 className="font-semibold text-emerald-950 text-sm">Inquiry Submitted!</h5>
                     <p className="text-xs text-emerald-800">
                       Our travel specialist is checking package schedules and will WhatsApp you
                       within 15 minutes.

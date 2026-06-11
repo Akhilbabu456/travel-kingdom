@@ -1,9 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/past-tours/page": "app/past-tours/page.js",
-  "/destinations/page": "app/destinations/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/destinations/[slug]/page": "app/destinations/[slug]/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/packages/page": "app/packages/page.js"
-}

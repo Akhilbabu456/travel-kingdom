@@ -133,7 +133,7 @@ export default function VisaPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "visa",
-      message: `Visa Enquiry for ${destination} from nationality ${nationality}. Passport status: ${passportStatus}. Travel Date: ${travelDate}. Category: ${visaType}.`,
+      message: `Visa Inquiry for ${destination} from nationality ${nationality}. Passport status: ${passportStatus}. Travel Date: ${travelDate}. Category: ${visaType}.`,
       visa: {
         nationality: nationality,
         destination_country: destination,
@@ -160,7 +160,7 @@ export default function VisaPage() {
         setInquirerEmail("");
       }, 4000);
     } else {
-      alert("Failed to submit enquiry. Please double check your details and try again.");
+      alert("Failed to submit inquiry. Please double check your details and try again.");
     }
   };
 

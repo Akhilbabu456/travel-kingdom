@@ -144,7 +144,7 @@ export default function FlightsPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "flight",
-      message: `Flight Booking Enquiry from ${from} to ${to} on ${departDate}. Return: ${returnDate || "None"}. Class: ${classType}. Travelers: ${passengers}. Special Fare: ${specialFare}.`,
+      message: `Flight Booking Inquiry from ${from} to ${to} on ${departDate}. Return: ${returnDate || "None"}. Class: ${classType}. Travelers: ${passengers}. Special Fare: ${specialFare}.`,
       flight: {
         origin: from,
         destination: to,
@@ -172,7 +172,7 @@ export default function FlightsPage() {
         setInquirerEmail("");
       }, 4000);
     } else {
-      alert("Failed to submit enquiry. Please double check your details and try again.");
+      alert("Failed to submit inquiry. Please double check your details and try again.");
     }
   };
 

@@ -32,17 +32,17 @@ export function Footer() {
               items={[
                 ["Destinations", "/destinations"],
                 ["Packages", "/packages"],
-                ["Honeymoon", "/honeymoon"],
-                ["International", "/international"],
-                ["Kerala", "/kerala"],
+                ["Honeymoon", "/packages?category=Honeymoon"],
+                ["International", "/packages?q=International"],
+                ["Kerala", "/packages?q=Kerala"],
               ]}
             />
             <FooterCol
               title="Company"
               items={[
                 ["About", "/about"],
-                ["Gallery", "/gallery"],
-                ["Testimonials", "/testimonials"],
+                ["Gallery", "/past-tours"],
+                ["Testimonials", "/past-tours"],
                 ["Blog", "/blog"],
                 ["Contact", "/contact"],
               ]}
@@ -50,11 +50,11 @@ export function Footer() {
             <FooterCol
               title="Services"
               items={[
-                ["Visa", "/services"],
-                ["Flights", "/services"],
-                ["Hotels", "/services"],
-                ["Custom tour", "/custom-tour"],
-                ["FAQ", "/faq"],
+                ["Visa", "/visa_passports"],
+                ["Flights", "/flights"],
+                ["Hotels", "/hotels"],
+                ["Custom tour", "/contact"],
+                ["FAQ", "/contact"],
               ]}
             />
           </div>

@@ -143,7 +143,7 @@ export default function Page({ params }: PageProps) {
                   Exclusive Offer
                 </div>
                 <div className="font-display text-2xl leading-snug text-foreground">
-                  Enquire Now to Unlock the Best Deals
+                  Inquire Now to Unlock the Best Deals
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   Contact us for private rates and offline resort tariffs.
@@ -154,7 +154,7 @@ export default function Page({ params }: PageProps) {
               href={`/contact?dest=${d.name}`}
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow"
             >
-              Enquire Now <ArrowRight className="h-4 w-4" />
+              Inquire Now <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/contact"

@@ -21,7 +21,7 @@ export default function ContactPage() {
       email: form.email,
       phone: form.phone,
       inquiry_type: "contact",
-      message: `Contact Enquiry / Custom Tour for ${form.dest}. Message: ${form.msg}`,
+      message: `Contact Inquiry / Custom Tour for ${form.dest}. Message: ${form.msg}`,
       contact: {
         subject: `Custom Tour Planning to ${form.dest}`,
         service_type: "custom_tour",
@@ -34,7 +34,7 @@ export default function ContactPage() {
       setSent(true);
       setForm({ name: "", email: "", phone: "", dest: "", msg: "" });
     } else {
-      alert("Failed to submit enquiry. Please check your details and try again.");
+      alert("Failed to submit inquiry. Please check your details and try again.");
     }
   };
 
@@ -282,7 +282,7 @@ export default function ContactPage() {
                       </>
                     ) : (
                       <>
-                        <Send className="h-4 w-4" /> Send Enquiry
+                        <Send className="h-4 w-4" /> Send Inquiry
                       </>
                     )}
                   </button>

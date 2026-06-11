@@ -577,7 +577,7 @@ function Storytelling() {
             Our Story <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
-            href="/testimonials"
+            href="/past-tours"
             className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-primary hover:text-primary"
           >
             Read Reviews
@@ -606,7 +606,7 @@ function GalleryPreview() {
       <div className="flex items-end justify-between gap-6">
         <SectionHeading eyebrow="Gallery" title="Postcards from the Road" />
         <Link
-          href="/gallery"
+          href="/past-tours"
           className="hidden shrink-0 items-center gap-1 text-sm font-medium text-primary hover:underline md:inline-flex"
         >
           Open Gallery <ArrowRight className="h-4 w-4" />

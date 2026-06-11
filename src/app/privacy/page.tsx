@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { PageShell, PageHero } from "@/components/site/page-shell";
 import { Newsletter } from "@/components/site/newsletter";
-import { ShieldCheck, Eye, Database, Share2, Lock } from "lucide-react";
+import { ShieldCheck, Eye, Database, Share2, Lock, Cookie } from "lucide-react";
 import heroImg from "@/assets/hero-kerala.jpg";
 
 export default function PrivacyPage() {
@@ -31,6 +31,18 @@ export default function PrivacyPage() {
       title: "4. Data Security & Storage",
       content:
         "Travel Kingdom implements robust security measures including digital encryption, access logs, and secure local databases to protect passport copies and financial information. Data is stored strictly in compliance with applicable Indian safety laws.",
+    },
+    {
+      icon: Cookie,
+      title: "5. Cookie Policy & Classifications",
+      content:
+        "www.travelkingdom.in operates a strict privacy policy and we are committed to being transparent about how we use cookies on our website. We classify the cookies we use into four categories: (1) Essential: Required for basic site and navigation functionality; (2) Functional: Remember your settings and preferences; (3) Analytics: Measure website traffic and performance to help improve our services; (4) Advertising: Deliver customized, relevant travel promotions. You have full control over cookie settings in your browser.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "6. Data Limitation & Privacy Guarantee",
+      content:
+        "We guarantee that we will never sell or rent your personal information to third parties for marketing purposes without your explicit consent. We strictly limit the information we collect to what is necessary to perform our services. Furthermore, internal access to your data is restricted strictly to employees who require it to perform their official duties.",
     },
   ];
 
