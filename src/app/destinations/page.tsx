@@ -79,7 +79,7 @@ export default function Page() {
           </div>
         ) : (
           <>
-            <Stagger className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <Stagger key={`${cat}-${q}`} className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((d) => (
                 <motion.div key={d.slug} variants={staggerItem}>
                   <DestinationCard d={d} />

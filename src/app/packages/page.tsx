@@ -114,7 +114,7 @@ function PackagesContent() {
           </div>
         ) : (
           <>
-            <Stagger className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <Stagger key={`${cat}-${sort}-${searchQuery}`} className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((p) => (
                 <motion.div key={p.slug} variants={staggerItem}>
                   <PackageCard p={p} />
