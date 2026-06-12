@@ -12,7 +12,6 @@ export function Logo({ light = false }: { light?: boolean }) {
         style={{
           height: "48px",
           width: "auto",
-          filter: light ? "brightness(0) invert(1)" : "none",
         }}
         priority
       />
