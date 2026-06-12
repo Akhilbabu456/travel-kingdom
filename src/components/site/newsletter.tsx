@@ -31,8 +31,12 @@ export function Newsletter() {
               required
               placeholder="you@email.com"
               className="flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-4 text-sm text-white placeholder:text-white/45 outline-none focus:border-primary"
+              suppressHydrationWarning
             />
-            <button className="rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground shadow-glow transition hover:-translate-y-0.5">
+            <button
+              className="rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground shadow-glow transition hover:-translate-y-0.5"
+              suppressHydrationWarning
+            >
               Subscribe
             </button>
           </form>

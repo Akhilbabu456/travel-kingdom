@@ -55,6 +55,7 @@ export function SearchWidget({ floating = false }: { floating?: boolean }) {
         <button
           onClick={handleFind}
           className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#e07a1b] hover:bg-[#e07a1b]/90 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_8px_25px_rgba(224,122,27,0.4)] transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+          suppressHydrationWarning
         >
           <Search className="h-4.5 w-4.5" /> Find
         </button>
@@ -107,6 +108,7 @@ function Field({
               : "placeholder:text-slate-400 text-slate-800"
           }`}
           placeholder={placeholder}
+          suppressHydrationWarning
         />
       </div>
     </div>

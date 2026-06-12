@@ -43,7 +43,9 @@ export default function FeedbackPage() {
             <button
               onClick={() => setActiveTab("reviews")}
               className={`relative z-10 flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors cursor-pointer ${
-                activeTab === "reviews" ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                activeTab === "reviews"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <MessageSquare className="h-4 w-4" />
@@ -52,7 +54,9 @@ export default function FeedbackPage() {
             <button
               onClick={() => setActiveTab("submit")}
               className={`relative z-10 flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors cursor-pointer ${
-                activeTab === "submit" ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                activeTab === "submit"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <Edit3 className="h-4 w-4" />
@@ -93,7 +97,7 @@ export default function FeedbackPage() {
                       className="mb-6 break-inside-avoid rounded-3xl border border-border bg-card p-6 shadow-sm hover:shadow-md transition-all duration-300 relative group"
                     >
                       <Quote className="absolute right-4 top-4 h-12 w-12 text-primary/5 group-hover:text-primary/10 transition-colors pointer-events-none" />
-                      
+
                       <div className="flex items-center gap-3 mb-4">
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm uppercase">
                           {cleanedName.charAt(0)}
@@ -162,7 +166,8 @@ export default function FeedbackPage() {
                       Thank You for Your Feedback!
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-sm mx-auto">
-                      Your review has been successfully logged. We appreciate you taking the time to share your travel story.
+                      Your review has been successfully logged. We appreciate you taking the time to
+                      share your travel story.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
@@ -193,7 +198,9 @@ export default function FeedbackPage() {
                             >
                               <Star
                                 className={`h-8 w-8 transition-colors ${
-                                  isFilled ? "fill-primary text-primary" : "text-muted-foreground/30"
+                                  isFilled
+                                    ? "fill-primary text-primary"
+                                    : "text-muted-foreground/30"
                                 }`}
                               />
                             </button>
@@ -307,8 +314,9 @@ export default function FeedbackPage() {
           <Heart className="h-10 w-10 text-primary mx-auto" />
           <h3 className="font-display text-xl text-foreground">Our Customer Commitment</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Every review is read directly by our Director, Rohit Kumar Gupta, and our Pune operations
-            team. We use your insights to optimize our flight desks and partner hotel standards.
+            Every review is read directly by our Director, Rohit Kumar Gupta, and our Pune
+            operations team. We use your insights to optimize our flight desks and partner hotel
+            standards.
           </p>
         </div>
       </section>

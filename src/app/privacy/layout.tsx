@@ -15,7 +15,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Privacy Policy | Travel Kingdom",
-    description: "Read Travel Kingdom's privacy policy to understand how we protect your personal information.",
+    description:
+      "Read Travel Kingdom's privacy policy to understand how we protect your personal information.",
     url: "https://www.travelkingdom.in/privacy",
     siteName: "Travel Kingdom",
     type: "website",

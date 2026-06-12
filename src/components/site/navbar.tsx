@@ -148,6 +148,7 @@ export function Navbar() {
           aria-label="Menu"
           onClick={() => setMobile(true)}
           className={`lg:hidden grid h-10 w-10 place-items-center rounded-full ${transparent ? "text-white" : "text-foreground"}`}
+          suppressHydrationWarning
         >
           <Menu />
         </button>
@@ -166,6 +167,7 @@ export function Navbar() {
               <button
                 onClick={() => setMobile(false)}
                 className="grid h-10 w-10 place-items-center rounded-full text-white"
+                suppressHydrationWarning
               >
                 <X />
               </button>

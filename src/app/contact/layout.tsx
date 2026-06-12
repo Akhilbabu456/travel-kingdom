@@ -35,7 +35,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Contact Us | Travel Kingdom",
-    description: "Get in touch with our travel experts for customized tour packages and travel assistance.",
+    description:
+      "Get in touch with our travel experts for customized tour packages and travel assistance.",
   },
   alternates: {
     canonical: "https://www.travelkingdom.in/contact",

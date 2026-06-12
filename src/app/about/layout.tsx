@@ -35,7 +35,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About Us | Travel Kingdom",
-    description: "Your trusted travel partner since 2011, providing world-class travel experiences.",
+    description:
+      "Your trusted travel partner since 2011, providing world-class travel experiences.",
   },
   alternates: {
     canonical: "https://www.travelkingdom.in/about",

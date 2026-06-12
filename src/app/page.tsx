@@ -131,6 +131,7 @@ function Hero() {
                 onClick={() => setI(idx)}
                 aria-label={`Slide ${idx + 1}`}
                 className={`h-1.5 rounded-full transition-all ${idx === i ? "w-8 bg-primary" : "w-3 bg-white/40"}`}
+                suppressHydrationWarning
               />
             ))}
           </div>
@@ -510,12 +511,14 @@ function Testimonials() {
           <button
             onClick={() => go(-1)}
             className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white transition hover:bg-white/10"
+            suppressHydrationWarning
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={() => go(1)}
             className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white transition hover:bg-white/10"
+            suppressHydrationWarning
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -525,6 +528,7 @@ function Testimonials() {
                 key={k}
                 onClick={() => setI(k)}
                 className={`h-1.5 rounded-full transition-all ${k === i ? "w-8 bg-primary" : "w-3 bg-white/30"}`}
+                suppressHydrationWarning
               />
             ))}
           </div>

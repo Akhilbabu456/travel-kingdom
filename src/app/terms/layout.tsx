@@ -15,7 +15,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Terms & Conditions | Travel Kingdom",
-    description: "Read Travel Kingdom's terms and conditions for tour packages and travel services.",
+    description:
+      "Read Travel Kingdom's terms and conditions for tour packages and travel services.",
     url: "https://www.travelkingdom.in/terms",
     siteName: "Travel Kingdom",
     type: "website",

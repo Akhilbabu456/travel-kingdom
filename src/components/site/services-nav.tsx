@@ -245,6 +245,7 @@ export function ServicesNav() {
                 <button
                   type="button"
                   className="flex flex-col items-center gap-2 transition-all duration-300 cursor-pointer"
+                  suppressHydrationWarning
                 >
                   <div className="transition-transform duration-300 group-hover:-translate-y-0.5">
                     {tab.icon}
