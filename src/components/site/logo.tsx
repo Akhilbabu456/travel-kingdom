@@ -8,7 +8,7 @@ export function Logo({ light = false }: { light?: boolean }) {
       <Image
         src={logoImg}
         alt="Travel Kingdom Logo"
-        className="h-10 w-auto object-contain"
+        className="h-14 w-auto object-contain"
         priority
       />
     </Link>
