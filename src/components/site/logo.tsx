@@ -9,6 +9,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         src={logoImg}
         alt="Travel Kingdom Logo"
         className="h-14 w-auto object-contain"
+        style={{ height: "56px", width: "auto" }}
         priority
       />
     </Link>
