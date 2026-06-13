@@ -114,6 +114,9 @@ export default function Page({ params }: PageProps) {
           src={mainImage}
           alt={pkg.title}
           className="absolute inset-0 h-full w-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-background" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 lg:px-8">
@@ -192,6 +195,9 @@ export default function Page({ params }: PageProps) {
                                 src={ssThumbnail}
                                 alt={s.title}
                                 className="absolute inset-0 h-full w-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.src = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&h=200&q=80";
+                                }}
                               />
                             </div>
                             <div className="min-w-0">
@@ -253,32 +259,17 @@ export default function Page({ params }: PageProps) {
         <aside>
           <div className="sticky top-28 space-y-6">
             <div className="rounded-3xl border border-border bg-card p-6 shadow-luxe">
-              {costValue ? (
-                <>
-                  <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                    starting from
-                  </div>
-                  <div className="mt-1 flex items-baseline gap-2">
-                    <span className="font-display text-4xl text-foreground">₹{inr(costValue)}</span>
-                    <span className="text-xs text-muted-foreground">per person</span>
-                  </div>
-                  <div className="text-xs text-muted-foreground mt-1">
-                    Tax & transfers included · {pkg.duration} Nights
-                  </div>
-                </>
-              ) : (
-                <div className="py-2">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
-                    Exclusive Offer
-                  </div>
-                  <div className="font-display text-2xl leading-snug text-foreground">
-                    Inquire Now to Unlock the Best Deals
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Contact us for private rates and offline resort tariffs.
-                  </p>
+              <div className="py-2">
+                <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+                  Exclusive Offer
                 </div>
-              )}
+                <div className="font-display text-2xl leading-snug text-foreground">
+                  Inquire Now to Unlock the Best Deals
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Contact us for private rates and offline resort tariffs.
+                </p>
+              </div>
 
               {/* Inquiry Form */}
               <div className="mt-6 border-t border-border pt-6">

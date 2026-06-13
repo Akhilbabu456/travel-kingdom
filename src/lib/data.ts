@@ -358,6 +358,34 @@ export const testimonials = [
       "We recently booked our holiday to Maldives from Travel Kingdom, it was a wonderful experience. Transfers and hotel booking was to the point. Alka ma'am regularly checked on us if everything was ok, which made it so memorable.",
     rating: 5,
   },
+  {
+    name: "Jothi Prakasam",
+    trip: "Kerala",
+    quote:
+      "I would recommend Travel Kingdom 100% for everyone. We had great experience in Kerala covering all places in 4 days at very competitive package with stay in 4 star hotels. Pooja and Alka was very helpful in effective planning of your trip and any changes at last minute taken care very smoothly. Plus daily update from Pooja on the days visit plan in a WhatsApp group. Best level of service!",
+    rating: 5,
+  },
+  {
+    name: "Anshu Agrawal",
+    trip: "Singapore, Malaysia & Thailand",
+    quote:
+      "What an amazing trip, curated well and executed to perfection by Travel Kingdom team. Special thanks to Alka for making a memorable vacation curated specially for my daughters with all her help and specific itinerary. From booking to our return to India, the team was available round the clock.",
+    rating: 5,
+  },
+  {
+    name: "Madhura Chipade",
+    trip: "Andaman",
+    quote:
+      "We recently booked a customised package from Travel Kingdom for our Andaman trip. Big thank you to Rohit sir and Alka ma'am for making our holiday more special by organising a trip in very well manner. Special thanks to Pooja our travel coordinator for all support.",
+    rating: 5,
+  },
+  {
+    name: "Ashok Thorat",
+    trip: "US Visa & Passport",
+    quote:
+      "I applied for Renewal of Passport and then for US Visa through Travel Kingdom, Aundh Office. Both the times I had an excellent experience. The office demonstrated prompt and perfect communication, professionalism in their approach, and an incredible human touch!",
+    rating: 5,
+  },
 ];
 
 export const stats = [

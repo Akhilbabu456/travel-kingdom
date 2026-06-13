@@ -107,7 +107,7 @@ export default function FlightsPage() {
   }, []);
 
   // Form States
-  const [tripType, setTripType] = useState<"oneway" | "roundtrip">("roundtrip");
+  const [tripType, setTripType] = useState<"oneway" | "roundtrip" | "multicity">("roundtrip");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [departDate, setDepartDate] = useState("");
@@ -196,6 +196,9 @@ export default function FlightsPage() {
               src={heroSlides[slideIdx].image}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80";
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background" />
           </motion.div>
@@ -227,7 +230,7 @@ export default function FlightsPage() {
         <div className="rounded-3xl border border-border bg-card/90 shadow-luxe backdrop-blur-xl p-6 md:p-8">
           <h2 className="font-display text-2xl text-foreground mb-6">Plan Your Flight</h2>
           <form onSubmit={handleSearch} className="space-y-6">
-            {/* Toggle tabs for Round Trip / One Way */}
+            {/* Toggle tabs for Round Trip / One Way / Multi City */}
             <div className="flex gap-4 border-b border-border pb-4">
               <button
                 type="button"
@@ -257,6 +260,23 @@ export default function FlightsPage() {
               >
                 One Way
                 {tripType === "oneway" && (
+                  <motion.div
+                    layoutId="tripTypeUnderline"
+                    className="absolute bottom-0 inset-x-0 h-0.5 bg-primary"
+                  />
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => setTripType("multicity")}
+                className={`text-sm font-semibold pb-2 transition-all relative ${
+                  tripType === "multicity"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Multi City
+                {tripType === "multicity" && (
                   <motion.div
                     layoutId="tripTypeUnderline"
                     className="absolute bottom-0 inset-x-0 h-0.5 bg-primary"
@@ -384,6 +404,7 @@ export default function FlightsPage() {
                   <option>Student Discount</option>
                   <option>Senior Citizen</option>
                   <option>Armed Forces</option>
+                  <option>Doctors & Nurses</option>
                 </select>
               </div>
             </div>

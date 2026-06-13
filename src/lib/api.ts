@@ -261,6 +261,18 @@ export function mapApiPackageToPackage(pkg: ApiPackage): Package {
   };
 }
 
+export async function fetchRawLocations(): Promise<ApiLocation[]> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/packages/packageslocations`);
+    if (!res.ok) throw new Error("API call failed");
+    const data: ApiLocation[] = await res.json();
+    return data.filter((l) => l.package_count > 0);
+  } catch (error) {
+    console.error("fetchRawLocations failed:", error);
+    return [];
+  }
+}
+
 export async function fetchLocations(): Promise<Destination[]> {
   try {
     const res = await fetch(`${API_BASE_URL}/packages/packageslocations`);

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Facebook, Youtube, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./logo";
 
 export function Footer() {
@@ -15,10 +15,17 @@ export function Footer() {
               backwaters, with a 24/7 concierge that never sleeps.
             </p>
             <div className="mt-6 flex gap-2">
-              {[Instagram, Facebook, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Facebook, url: "https://www.facebook.com/travelkingdom.india.9/" },
+                { Icon: Instagram, url: "https://www.instagram.com/travelkingdom.in/" },
+                { Icon: Youtube, url: "https://www.youtube.com/@TravelKingdom123" },
+                { Icon: Linkedin, url: "https://www.linkedin.com/company/travel-kingdom-travel-agency-in-pune/about/" },
+              ].map(({ Icon, url }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition hover:border-primary hover:text-primary"
                 >
                   <Icon className="h-4 w-4" />
@@ -40,11 +47,14 @@ export function Footer() {
             <FooterCol
               title="Company"
               items={[
-                ["About", "/about"],
-                ["Gallery", "/past-tours"],
-                ["Testimonials", "/past-tours"],
+                ["About Us", "/about"],
+                ["Gallery & Testimonials", "/past-tours"],
+                ["Careers", "/careers"],
+                ["Terms & Conditions", "/terms"],
+                ["Privacy Policy", "/privacy"],
+                ["Feedback", "/feedback"],
                 ["Blog", "/blog"],
-                ["Contact", "/contact"],
+                ["Contact Us", "/contact"],
               ]}
             />
             <FooterCol
@@ -75,20 +85,6 @@ export function Footer() {
         </div>
         <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Travel Kingdom. All rights reserved.</p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
-            <Link href="/terms" className="hover:text-primary transition">
-              Terms & Conditions
-            </Link>
-            <Link href="/privacy" className="hover:text-primary transition">
-              Privacy Policy
-            </Link>
-            <Link href="/careers" className="hover:text-primary transition">
-              Careers
-            </Link>
-            <Link href="/feedback" className="hover:text-primary transition">
-              Feedback
-            </Link>
-          </div>
           <p>Crafted with care. From concern to freedom.</p>
         </div>
       </div>

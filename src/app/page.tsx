@@ -215,21 +215,41 @@ function FeaturedDestinations() {
 function TrendingPackages() {
   const [list, setList] = useState<Package[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<"ALL" | "DOMESTIC" | "INTERNATIONAL">("ALL");
 
   useEffect(() => {
-    fetchPackages({ limit: 4 }).then((res) => {
+    setLoading(true);
+    const filters = activeTab === "ALL" ? { limit: 4 } : { package_type: activeTab, limit: 4 };
+    fetchPackages(filters).then((res) => {
       setList(res.slice(0, 4));
       setLoading(false);
     });
-  }, []);
+  }, [activeTab]);
 
   return (
     <section className="mx-auto max-w-7xl px-5 pt-28 lg:px-8">
-      <SectionHeading
-        eyebrow="Trending Now"
-        title="Holidays Our Travellers Are Loving"
-        sub="Trending curated tour packages combining seamless flights, verified hotels, and local sightseeing."
-      />
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <SectionHeading
+          eyebrow="Trending Now"
+          title="Holidays Our Travellers Are Loving"
+          sub="Trending curated tour packages combining seamless flights, verified hotels, and local sightseeing."
+        />
+        <div className="flex flex-wrap gap-2 md:mb-4 shrink-0">
+          {(["ALL", "DOMESTIC", "INTERNATIONAL"] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                activeTab === tab
+                  ? "bg-primary text-primary-foreground shadow-glow"
+                  : "border border-border bg-card text-foreground/80 hover:border-primary hover:text-primary"
+              }`}
+            >
+              {tab === "ALL" ? "All" : tab === "DOMESTIC" ? "Domestic" : "International"}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {loading ? (
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -238,9 +258,9 @@ function TrendingPackages() {
           ))}
         </div>
       ) : (
-        <Stagger className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger key={activeTab} className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {list.map((p) => (
-            <motion.div key={p.slug} variants={staggerItem}>
+            <motion.div key={p.slug} variants={staggerItem} className="h-full">
               <PackageCard p={p} />
             </motion.div>
           ))}
@@ -248,10 +268,10 @@ function TrendingPackages() {
       )}
       <Reveal className="mt-10 text-center">
         <Link
-          href="/packages"
+          href={activeTab === "ALL" ? "/packages" : `/packages?q=${activeTab.toLowerCase()}`}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-primary hover:text-primary"
         >
-          See All Packages <ArrowRight className="h-4 w-4" />
+          See All {activeTab === "ALL" ? "" : activeTab === "DOMESTIC" ? "Domestic " : "International "}Packages <ArrowRight className="h-4 w-4" />
         </Link>
       </Reveal>
     </section>
@@ -377,6 +397,9 @@ function FindYourPerfectTrip() {
                   src={image}
                   alt={t.name}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
@@ -549,6 +572,9 @@ function Storytelling() {
             alt="Kerala backwaters at sunrise"
             className="aspect-[4/3] w-full rounded-[2.5rem] object-cover shadow-luxe"
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.src = "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80";
+            }}
           />
           <motion.div
             animate={{ y: [0, -10, 0] }}
@@ -627,6 +653,9 @@ function GalleryPreview() {
                 alt=""
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-110"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&h=400&q=80";
+                }}
               />
             </div>
           </Reveal>
@@ -644,6 +673,9 @@ function CtaBand() {
           src={heroSlides[0].image}
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-40"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1920&q=80";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/85 via-secondary/70 to-secondary/95" />
         <div className="relative mx-auto max-w-2xl text-white">

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Search, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Logo } from "./logo";
 import { fetchLocations, type Destination } from "@/lib/api";
 
@@ -123,13 +123,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Link
-            href="/packages"
-            aria-label="Search"
-            className={`grid h-10 w-10 place-items-center rounded-full transition-colors ${transparent ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"}`}
-          >
-            <Search className="h-4 w-4" />
-          </Link>
+
           <a
             href="tel:+919860874848"
             className={`hidden xl:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${transparent ? "text-white/90" : "text-foreground/80"}`}

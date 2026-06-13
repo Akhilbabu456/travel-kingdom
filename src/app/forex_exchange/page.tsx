@@ -123,6 +123,7 @@ export default function ForexPage() {
   const [deliveryPref, setDeliveryPref] = useState("Doorstep Delivery");
   const [travelDate, setTravelDate] = useState("");
   const [assistanceType, setAssistanceType] = useState("Both (Recommended Combo)");
+  const [travelDestination, setTravelDestination] = useState("");
 
   // Live calculator calculation
   const [totalINR, setTotalINR] = useState(84500);
@@ -164,14 +165,14 @@ export default function ForexPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "forex_exchange_assistance",
-      message: `Forex Inquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.`,
+      message: `Forex Inquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Destination: ${travelDestination}. Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.`,
       forex: {
         currency: currency,
         amount: parseFloat(amount) || 0,
         delivery_preference: deliveryPref,
         assistance_type: assistanceType,
         travel_date: travelDate || null,
-        travel_destination: null,
+        travel_destination: travelDestination || null,
       },
     });
 
@@ -183,6 +184,7 @@ export default function ForexPage() {
         setShowInquiry(false);
         setAmount("1000");
         setTravelDate("");
+        setTravelDestination("");
         setInquirerName("");
         setInquirerPhone("");
         setInquirerEmail("");
@@ -212,6 +214,9 @@ export default function ForexPage() {
               src={heroSlides[slideIdx].image}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1920&q=80";
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background" />
           </motion.div>
@@ -344,7 +349,7 @@ export default function ForexPage() {
             </div>
 
             {/* Dropdowns row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-muted-foreground uppercase">
                   Delivery Preference
@@ -375,6 +380,20 @@ export default function ForexPage() {
                   <option>Prepaid Multi-Currency Card</option>
                   <option>Both (Recommended Combo)</option>
                 </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-muted-foreground uppercase">
+                  Travel Destination
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Maldives, Europe"
+                  value={travelDestination}
+                  onChange={(e) => setTravelDestination(e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-background text-sm text-foreground focus:outline-none focus:border-primary"
+                />
               </div>
             </div>
 

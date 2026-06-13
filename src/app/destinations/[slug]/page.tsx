@@ -67,6 +67,9 @@ export default function Page({ params }: PageProps) {
           src={d.image}
           alt={d.name}
           className="absolute inset-0 h-full w-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/85" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 lg:px-8">
@@ -127,17 +130,6 @@ export default function Page({ params }: PageProps) {
         </div>
         <aside>
           <div className="sticky top-28 rounded-3xl border border-border bg-card p-6 shadow-luxe">
-            {d.fromPrice ? (
-              <>
-                <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                  starting from
-                </div>
-                <div className="mt-1 font-display text-4xl text-foreground">
-                  ₹{inr(d.fromPrice)}
-                </div>
-                <div className="text-xs text-muted-foreground">per person · {d.nights} nights</div>
-              </>
-            ) : (
               <div className="py-2">
                 <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
                   Exclusive Offer
@@ -149,7 +141,6 @@ export default function Page({ params }: PageProps) {
                   Contact us for private rates and offline resort tariffs.
                 </p>
               </div>
-            )}
             <Link
               href={`/contact?dest=${d.name}`}
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow"

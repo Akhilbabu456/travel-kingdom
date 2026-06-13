@@ -137,7 +137,15 @@ export default function VisaPage() {
       visa: {
         nationality: nationality,
         destination_country: destination,
-        visa_type: visaType.toLowerCase().replace(" ", "") as any,
+        visa_type: visaType.toLowerCase().includes("tourist")
+          ? "tourist"
+          : visaType.toLowerCase().includes("business")
+            ? "business"
+            : visaType.toLowerCase().includes("student")
+              ? "student"
+              : visaType.toLowerCase().includes("work")
+                ? "work"
+                : "other",
         passport_status: passportStatus.toLowerCase().includes("valid")
           ? "valid"
           : passportStatus.toLowerCase().includes("expired")
@@ -184,6 +192,9 @@ export default function VisaPage() {
               src={heroSlides[slideIdx].image}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=1920&q=80";
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background" />
           </motion.div>
@@ -285,6 +296,8 @@ export default function VisaPage() {
                     <option>Business Visa</option>
                     <option>Student Visa</option>
                     <option>Transit Visa</option>
+                    <option>Work Visa</option>
+                    <option>Other Visa</option>
                   </select>
                 </div>
               </div>
