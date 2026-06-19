@@ -144,6 +144,7 @@ function PackagesContent() {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as (typeof sorts)[number]["k"])}
+            suppressHydrationWarning
             className="rounded-full border border-border bg-card px-5 py-3 text-sm outline-none focus:border-primary text-foreground"
           >
             {sorts.map((s) => (
