@@ -1,10 +1,31 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 export function WhatsAppFab() {
+  const [message, setMessage] = useState("Hi Travel Kingdom, I'd like to know more about your services.");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname;
+      if (path.includes("/packages/")) {
+        const last = path.split("/").filter(Boolean).pop();
+        if (last) {
+          // Replace hyphens with spaces and capitalize
+          const formatted = last.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+          setMessage(`I'm enquiring about ${formatted}`);
+        }
+      }
+    }
+  }, []);
+
+  const whatsappUrl = `https://wa.me/919860874848?text=${encodeURIComponent(message)}`;
+
   return (
     <motion.a
-      href="https://wa.me/919999999999"
+      href={whatsappUrl}
       target="_blank"
       rel="noreferrer"
       initial={{ scale: 0, opacity: 0 }}

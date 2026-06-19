@@ -26,11 +26,13 @@ export function PageHero({
   title,
   sub,
   image,
+  children,
 }: {
   eyebrow?: string;
   title: string;
   sub?: string;
   image: any;
+  children?: ReactNode;
 }) {
   return (
     <section className="relative isolate flex min-h-[70vh] items-end overflow-hidden pt-20">
@@ -64,6 +66,7 @@ export function PageHero({
             {sub}
           </motion.p>
         )}
+        {children && <div className="mt-12">{children}</div>}
       </div>
     </section>
   );

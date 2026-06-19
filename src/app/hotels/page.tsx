@@ -133,6 +133,14 @@ export default function HotelsPage() {
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [urlLastWord, setUrlLastWord] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const last = window.location.pathname.split("/").filter(Boolean).pop() || "";
+      setUrlLastWord(last);
+    }
+  }, []);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -154,7 +162,7 @@ export default function HotelsPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "hotels",
-      message: `Hotel Booking Inquiry in ${destination} from ${checkIn} to ${checkOut}. Room: ${roomType}. Guests: ${guests}. Budget: ${budgetRange}.`,
+      message: `Hotel Booking Inquiry in ${destination} from ${checkIn} to ${checkOut}. Room: ${roomType}. Guests: ${guests}. Budget: ${budgetRange}.${urlLastWord ? `\n\n[Source URL Last Word: ${urlLastWord}]` : ""}`,
       hotels: {
         destination: destination,
         check_in_date: checkIn,
@@ -409,6 +417,7 @@ export default function HotelsPage() {
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
+                    <input type="hidden" name="source_url_last_word" value={urlLastWord} />
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-muted-foreground uppercase">
                         Your Name

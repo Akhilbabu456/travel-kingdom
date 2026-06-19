@@ -43,7 +43,7 @@ export function Navbar() {
     });
   }, []);
 
-  const transparent = false;
+  const transparent = !scrolled;
 
   return (
     <motion.header
@@ -51,7 +51,7 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        transparent ? "bg-transparent" : "glass shadow-[0_1px_0_0_oklch(0_0_0/0.04)]"
+        transparent ? "bg-transparent" : "bg-background shadow-md"
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
@@ -125,7 +125,9 @@ export function Navbar() {
         <div className="hidden items-center gap-2 lg:flex">
           <a
             href="tel:+919860874848"
-            className={`hidden xl:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${transparent ? "text-white/90" : "text-foreground/80"}`}
+            className={`hidden xl:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${
+              transparent ? "text-white/90" : "text-foreground/80"
+            }`}
           >
             <Phone className="h-4 w-4" /> +91 98608 74848
           </a>
@@ -140,7 +142,9 @@ export function Navbar() {
         <button
           aria-label="Menu"
           onClick={() => setMobile(true)}
-          className={`lg:hidden grid h-10 w-10 place-items-center rounded-full ${transparent ? "text-white" : "text-foreground"}`}
+          className={`lg:hidden grid h-10 w-10 place-items-center rounded-full ${
+            transparent ? "text-white" : "text-foreground"
+          }`}
           suppressHydrationWarning
         >
           <Menu />
@@ -153,13 +157,13 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-secondary/95 backdrop-blur-lg lg:hidden"
+            className="fixed inset-0 z-[60] bg-background lg:hidden"
           >
             <div className="flex h-20 items-center justify-between px-5">
-              <Logo light />
+              <Logo />
               <button
                 onClick={() => setMobile(false)}
-                className="grid h-10 w-10 place-items-center rounded-full text-white"
+                className="grid h-10 w-10 place-items-center rounded-full text-foreground"
                 suppressHydrationWarning
               >
                 <X />
@@ -178,7 +182,7 @@ export function Navbar() {
                 >
                   <Link
                     href={item.to}
-                    className="block border-b border-white/10 py-4 font-display text-2xl text-white"
+                    className="block border-b border-border py-4 font-display text-2xl text-foreground"
                   >
                     {item.label}
                   </Link>

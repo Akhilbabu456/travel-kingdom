@@ -41,7 +41,25 @@ export default function Page() {
         title="An Atlas of Escapes"
         sub="Hand-picked places we'd happily revisit — sorted by mood, not marketing."
         image="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1920&q=80"
-      />
+      >
+        <div className="w-full max-w-2xl overflow-hidden rounded-3xl p-5 sm:p-6 shadow-2xl transition-all duration-300 bg-black/75 sm:glass-dark border border-white/20">
+          <div className="flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all duration-300 bg-white/15 text-white border border-white/10 focus-within:bg-white/25 focus-within:border-white/30">
+            <Search className="h-5 w-5 shrink-0 text-[#e07a1b] sm:text-white" />
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] uppercase tracking-[0.12em] font-bold pb-0.5 text-white/80">
+                Search Destinations
+              </div>
+              <input
+                type="text"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                className="w-full bg-transparent text-sm font-semibold outline-none focus:ring-0 placeholder:text-white/60 text-white [color-scheme:dark]"
+                placeholder="Where to? (e.g., Maldives, Bali)"
+              />
+            </div>
+          </div>
+        </div>
+      </PageHero>
 
       <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -59,15 +77,6 @@ export default function Page() {
                 {c}
               </button>
             ))}
-          </div>
-          <div className="relative w-full lg:w-80">
-            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Search destinations..."
-              className="w-full rounded-full border border-border bg-card py-3 pl-11 pr-4 text-sm outline-none focus:border-primary"
-            />
           </div>
         </div>
 

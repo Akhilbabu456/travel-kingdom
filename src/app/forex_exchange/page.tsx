@@ -144,6 +144,14 @@ export default function ForexPage() {
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [urlLastWord, setUrlLastWord] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const last = window.location.pathname.split("/").filter(Boolean).pop() || "";
+      setUrlLastWord(last);
+    }
+  }, []);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -165,7 +173,7 @@ export default function ForexPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "forex_exchange_assistance",
-      message: `Forex Inquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Destination: ${travelDestination}. Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.`,
+      message: `Forex Inquiry for ${amount} ${currency} (${transactionType === "buy" ? "Buying" : "Selling"}). Destination: ${travelDestination}. Delivery Preference: ${deliveryPref}. Assistance Type: ${assistanceType}. Travel Date: ${travelDate}. Approx Value in INR: ₹${totalINR}.${urlLastWord ? `\n\n[Source URL Last Word: ${urlLastWord}]` : ""}`,
       forex: {
         currency: currency,
         amount: parseFloat(amount) || 0,
@@ -456,6 +464,7 @@ export default function ForexPage() {
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
+                    <input type="hidden" name="source_url_last_word" value={urlLastWord} />
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-muted-foreground uppercase">
                         Your Name

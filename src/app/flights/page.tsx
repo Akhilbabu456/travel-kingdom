@@ -123,6 +123,14 @@ export default function FlightsPage() {
   const [inquirerEmail, setInquirerEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [urlLastWord, setUrlLastWord] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const last = window.location.pathname.split("/").filter(Boolean).pop() || "";
+      setUrlLastWord(last);
+    }
+  }, []);
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -144,7 +152,7 @@ export default function FlightsPage() {
       email: inquirerEmail,
       phone: inquirerPhone,
       inquiry_type: "flight",
-      message: `Flight Booking Inquiry from ${from} to ${to} on ${departDate}. Return: ${returnDate || "None"}. Class: ${classType}. Travelers: ${passengers}. Special Fare: ${specialFare}.`,
+      message: `Flight Booking Inquiry from ${from} to ${to} on ${departDate}. Return: ${returnDate || "None"}. Class: ${classType}. Travelers: ${passengers}. Special Fare: ${specialFare}.${urlLastWord ? `\n\n[Source URL Last Word: ${urlLastWord}]` : ""}`,
       flight: {
         origin: from,
         destination: to,
@@ -465,6 +473,7 @@ export default function FlightsPage() {
                     </p>
                   </div>
                   <form onSubmit={handleInquirySubmit} className="space-y-4">
+                    <input type="hidden" name="source_url_last_word" value={urlLastWord} />
                     <div className="space-y-1">
                       <label className="text-xs font-semibold text-muted-foreground uppercase">
                         Your Name
