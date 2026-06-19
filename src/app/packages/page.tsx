@@ -111,6 +111,7 @@ function PackagesContent() {
               <button
                 key={t}
                 onClick={() => setTripType(t)}
+                suppressHydrationWarning
                 className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
                   tripType === t
                     ? "bg-primary text-primary-foreground shadow-glow"
@@ -129,6 +130,7 @@ function PackagesContent() {
               <button
                 key={c}
                 onClick={() => setCat(c)}
+                suppressHydrationWarning
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   cat === c
                     ? "bg-primary text-primary-foreground shadow-glow"
