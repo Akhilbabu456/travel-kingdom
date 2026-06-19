@@ -164,7 +164,7 @@ function PackagesContent() {
         ) : (
           <>
             <Stagger
-              key={`${cat}-${sort}-${searchQuery}`}
+              key={`${cat}-${tripType}-${sort}-${searchQuery}`}
               className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
             >
               {list.map((p) => (

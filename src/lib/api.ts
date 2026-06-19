@@ -174,8 +174,76 @@ export function mapLocationToDestination(loc: ApiLocation): Destination {
 }
 
 // Convert ApiPackage to Package
+const INTERNATIONAL_DESTS = new Set([
+  "ananuri",
+  "adelaide",
+  "bangkok",
+  "boston",
+  "busan",
+  "cappadocia",
+  "chitwan",
+  "dubai",
+  "edinburgh",
+  "gold coast",
+  "ho chi minh city",
+  "hoi an",
+  "kathmandu",
+  "krabi",
+  "nusa penida",
+  "paro",
+  "pattaya",
+  "phu quoc",
+  "praslin",
+  "singapore",
+  "strokestown",
+  "maldives",
+  "seychelles",
+  "thailand",
+  "bali",
+  "vietnam",
+  "georgia",
+  "australia",
+  "turkey",
+  "united kingdom",
+  "ireland",
+  "bhutan",
+  "nepal",
+  "dublin",
+  "galway",
+  "london",
+  "sydney",
+  "melbourne",
+  "brisbane",
+  "cairns",
+  "antalya",
+  "tbilisi",
+  "batumi",
+  "abu dhabi",
+  "jeju",
+  "seoul",
+  "sri lanka",
+  "srilanka",
+  "malaysia",
+  "kuala lumpur",
+  "europe",
+  "switzerland",
+  "paris",
+  "france",
+  "italy",
+  "rome",
+  "america",
+  "united states",
+  "usa",
+  "japan",
+  "tokyo",
+  "kyoto",
+]);
+
 export function mapApiPackageToPackage(pkg: ApiPackage): Package {
   const price = pkg.cost?.cost || undefined;
+  const isInternational = pkg.destinations.some((d) =>
+    INTERNATIONAL_DESTS.has(d.toLowerCase().trim()),
+  );
 
   // Heuristic mapping for Package categories based on title/destination
   const t = pkg.title.toLowerCase();
@@ -258,7 +326,7 @@ export function mapApiPackageToPackage(pkg: ApiPackage): Package {
     highlights: Array.from(
       new Set(pkg.itineraries.flatMap((it) => (it.sightseeings || []).map((s) => s.title))),
     ).slice(0, 4),
-    packageType: pkg.package_type,
+    packageType: pkg.package_type || (isInternational ? "INTERNATIONAL" : "DOMESTIC"),
   };
 }
 
