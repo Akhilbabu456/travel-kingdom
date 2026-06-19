@@ -215,7 +215,8 @@ export default function ForexPage() {
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1920&q=80";
+                e.currentTarget.src =
+                  "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1920&q=80";
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background" />

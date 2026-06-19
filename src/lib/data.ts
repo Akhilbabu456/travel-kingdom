@@ -197,6 +197,7 @@ export type Package = {
   reviews: number;
   category: "Honeymoon" | "Family" | "Adventure" | "Luxury" | "Group" | "Hidden Gems";
   highlights: string[];
+  packageType?: "DOMESTIC" | "INTERNATIONAL";
 };
 
 export const packages: Package[] = [

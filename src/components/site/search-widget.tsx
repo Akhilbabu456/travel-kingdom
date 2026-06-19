@@ -40,11 +40,11 @@ export function SearchWidget({ floating = false }: { floating?: boolean }) {
   const normalize = (val?: string | null) => (val || "").trim().toLowerCase();
 
   const domesticList = locations.filter(
-    (loc) => normalize(loc.country) === "india" && loc.type === "state"
+    (loc) => normalize(loc.country) === "india" && loc.type === "state",
   );
 
   const internationalList = locations.filter(
-    (loc) => !normalize(loc.country).includes("india") && loc.type === "country"
+    (loc) => !normalize(loc.country).includes("india") && loc.type === "country",
   );
 
   // Sorting alphabetically
@@ -69,8 +69,8 @@ export function SearchWidget({ floating = false }: { floating?: boolean }) {
               activeTab === tab
                 ? "bg-[#e07a1b] text-white shadow-glow"
                 : floating
-                ? "text-white/70 hover:text-white hover:bg-white/5"
-                : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  ? "text-white/70 hover:text-white hover:bg-white/5"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
             }`}
           >
             {tab === "search" ? "Search" : tab === "domestic" ? "Domestic" : "International"}

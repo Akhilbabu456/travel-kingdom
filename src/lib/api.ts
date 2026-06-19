@@ -258,6 +258,7 @@ export function mapApiPackageToPackage(pkg: ApiPackage): Package {
     highlights: Array.from(
       new Set(pkg.itineraries.flatMap((it) => (it.sightseeings || []).map((s) => s.title))),
     ).slice(0, 4),
+    packageType: pkg.package_type,
   };
 }
 

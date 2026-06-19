@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { PageShell, PageHero } from "@/components/site/page-shell";
@@ -10,8 +10,16 @@ import heroImg from "@/assets/hero-switzerland.jpg";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", dest: "", msg: "" });
+  const [urlLastWord, setUrlLastWord] = useState("");
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const last = window.location.pathname.split("/").filter(Boolean).pop() || "";
+      setUrlLastWord(last);
+    }
+  }, []);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +29,7 @@ export default function ContactPage() {
       email: form.email,
       phone: form.phone,
       inquiry_type: "contact",
-      message: `Contact Inquiry / Custom Tour for ${form.dest}. Message: ${form.msg}`,
+      message: `Contact Inquiry / Custom Tour for ${form.dest}. Message: ${form.msg}${urlLastWord ? `\n\n[Source URL Last Word: ${urlLastWord}]` : ""}`,
       contact: {
         subject: `Custom Tour Planning to ${form.dest}`,
         service_type: "custom_tour",
@@ -160,6 +168,7 @@ export default function ContactPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={onSubmit} className="space-y-4">
+                  <input type="hidden" name="source_url_last_word" value={urlLastWord} />
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-1">
                       <label

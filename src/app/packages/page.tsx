@@ -26,6 +26,7 @@ function PackagesContent() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [loading, setLoading] = useState(true);
   const [cat, setCat] = useState<(typeof cats)[number]>("All");
+  const [tripType, setTripType] = useState<"All" | "Domestic" | "International">("All");
   const [sort, setSort] = useState<(typeof sorts)[number]["k"]>("popular");
 
   // Sync category filter from query params
@@ -34,6 +35,16 @@ function PackagesContent() {
       setCat(searchCat as any);
     }
   }, [searchCat]);
+
+  // Sync trip type from query params
+  useEffect(() => {
+    const q = searchQuery.toLowerCase();
+    if (q === "domestic") {
+      setTripType("Domestic");
+    } else if (q === "international") {
+      setTripType("International");
+    }
+  }, [searchQuery]);
 
   useEffect(() => {
     fetchPackages().then((res) => {
@@ -45,12 +56,25 @@ function PackagesContent() {
   const list = useMemo(() => {
     let l = packages.filter((p) => {
       const matchCat = cat === "All" || p.category === cat;
+
+      let matchTripType = true;
+      if (tripType === "Domestic") {
+        matchTripType = p.packageType === "DOMESTIC";
+      } else if (tripType === "International") {
+        matchTripType = p.packageType === "INTERNATIONAL";
+      }
+
+      const q = searchQuery.toLowerCase();
+      const isTripTypeQuery = q === "domestic" || q === "international";
+
       const matchSearch =
         searchQuery === "" ||
-        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.destination.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.category.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchCat && matchSearch;
+        isTripTypeQuery ||
+        p.title.toLowerCase().includes(q) ||
+        p.destination.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q);
+
+      return matchCat && matchTripType && matchSearch;
     });
 
     if (sort === "low") l = [...l].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
@@ -59,7 +83,7 @@ function PackagesContent() {
     if (sort === "popular") l = [...l].sort((a, b) => b.reviews - a.reviews);
 
     return l;
-  }, [packages, cat, sort, searchQuery]);
+  }, [packages, cat, tripType, sort, searchQuery]);
 
   return (
     <>
@@ -77,6 +101,28 @@ function PackagesContent() {
       <ServicesNav />
 
       <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+        {/* Trip Type Selector */}
+        <div className="mb-6 flex items-center gap-3 border-b border-border/50 pb-5">
+          <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground shrink-0">
+            Trip Type:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {(["All", "Domestic", "International"] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTripType(t)}
+                className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
+                  tripType === t
+                    ? "bg-primary text-primary-foreground shadow-glow"
+                    : "border border-border bg-card text-foreground/80 hover:border-primary hover:text-primary"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-2">
             {cats.map((c) => (

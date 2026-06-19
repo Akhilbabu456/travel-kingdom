@@ -43,7 +43,7 @@ export function Navbar() {
     });
   }, []);
 
-  const transparent = isHome && !scrolled;
+  const transparent = false;
 
   return (
     <motion.header
@@ -123,7 +123,6 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-
           <a
             href="tel:+919860874848"
             className={`hidden xl:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ${transparent ? "text-white/90" : "text-foreground/80"}`}

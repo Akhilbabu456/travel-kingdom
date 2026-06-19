@@ -197,7 +197,8 @@ export default function FlightsPage() {
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80";
+                e.currentTarget.src =
+                  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80";
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background" />

@@ -33,6 +33,7 @@ export default function Page({ params }: PageProps) {
 
   const [pkg, setPkg] = useState<ApiPackage | null>(null);
   const [loading, setLoading] = useState(true);
+  const [urlLastWord, setUrlLastWord] = useState("");
 
   // Form states
   const [name, setName] = useState("");
@@ -42,6 +43,13 @@ export default function Page({ params }: PageProps) {
   const [travelers, setTravelers] = useState("2");
   const [inquirySent, setInquirySent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const last = window.location.pathname.split("/").filter(Boolean).pop() || "";
+      setUrlLastWord(last);
+    }
+  }, []);
 
   useEffect(() => {
     fetchPackageBySlug(slug).then((res) => {
@@ -73,7 +81,7 @@ export default function Page({ params }: PageProps) {
       email: email,
       phone: phone,
       inquiry_type: "package",
-      message: `Inquiry for package: ${pkg.title} (${pkg.duration} Nights). Travelers: ${travelers}`,
+      message: `Inquiry for package: ${pkg.title} (${pkg.duration} Nights). Travelers: ${travelers}${urlLastWord ? `\n\n[Source URL Last Word: ${urlLastWord}]` : ""}`,
       package: {
         package_id: String(pkg.id),
         travelers: parseInt(travelers) || 2,
@@ -115,7 +123,8 @@ export default function Page({ params }: PageProps) {
           alt={pkg.title}
           className="absolute inset-0 h-full w-full object-cover"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80";
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-background" />
@@ -196,7 +205,8 @@ export default function Page({ params }: PageProps) {
                                 alt={s.title}
                                 className="absolute inset-0 h-full w-full object-cover"
                                 onError={(e) => {
-                                  e.currentTarget.src = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&h=200&q=80";
+                                  e.currentTarget.src =
+                                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&h=200&q=80";
                                 }}
                               />
                             </div>
@@ -290,6 +300,7 @@ export default function Page({ params }: PageProps) {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleInquirySubmit} className="space-y-3.5">
+                    <input type="hidden" name="source_url_last_word" value={urlLastWord} />
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <input

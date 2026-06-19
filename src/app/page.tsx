@@ -49,7 +49,6 @@ export default function Home() {
       <StatsSection />
       <Testimonials />
       <Storytelling />
-      <GalleryPreview />
       <CtaBand />
       <div className="pb-24">
         <Newsletter />
@@ -89,7 +88,7 @@ function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-12 pt-40 lg:px-8 lg:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-6 pt-24 sm:pb-12 sm:pt-32 lg:px-8 lg:pb-20 lg:pt-40">
         <AnimatePresence mode="wait">
           <motion.div
             key={i}
@@ -258,7 +257,10 @@ function TrendingPackages() {
           ))}
         </div>
       ) : (
-        <Stagger key={activeTab} className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger
+          key={activeTab}
+          className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {list.map((p) => (
             <motion.div key={p.slug} variants={staggerItem} className="h-full">
               <PackageCard p={p} />
@@ -271,7 +273,9 @@ function TrendingPackages() {
           href={activeTab === "ALL" ? "/packages" : `/packages?q=${activeTab.toLowerCase()}`}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-primary hover:text-primary"
         >
-          See All {activeTab === "ALL" ? "" : activeTab === "DOMESTIC" ? "Domestic " : "International "}Packages <ArrowRight className="h-4 w-4" />
+          See All{" "}
+          {activeTab === "ALL" ? "" : activeTab === "DOMESTIC" ? "Domestic " : "International "}
+          Packages <ArrowRight className="h-4 w-4" />
         </Link>
       </Reveal>
     </section>
@@ -398,7 +402,8 @@ function FindYourPerfectTrip() {
                   alt={t.name}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80";
+                    e.currentTarget.src =
+                      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80";
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -573,7 +578,8 @@ function Storytelling() {
             className="aspect-[4/3] w-full rounded-[2.5rem] object-cover shadow-luxe"
             loading="lazy"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80";
+              e.currentTarget.src =
+                "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80";
             }}
           />
           <motion.div
@@ -618,53 +624,6 @@ function Storytelling() {
   );
 }
 
-function GalleryPreview() {
-  // Let's use nice Unsplash links for gallery preview
-  const gallery = [
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&h=500&q=80",
-    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&h=400&q=80",
-    "https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=400&h=400&q=80",
-    "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=400&h=400&q=80",
-    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=400&h=500&q=80",
-    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=400&h=400&q=80",
-    "https://images.unsplash.com/photo-1599661046289-e318878567c4?auto=format&fit=crop&w=400&h=400&q=80",
-    "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=400&h=500&q=80",
-  ];
-
-  return (
-    <section className="mx-auto mt-28 max-w-7xl px-5 lg:px-8">
-      <div className="flex items-end justify-between gap-6">
-        <SectionHeading eyebrow="Gallery" title="Postcards from the Road" />
-        <Link
-          href="/past-tours"
-          className="hidden shrink-0 items-center gap-1 text-sm font-medium text-primary hover:underline md:inline-flex"
-        >
-          Open Gallery <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-      <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {gallery.map((img, idx) => (
-          <Reveal key={idx} delay={idx * 0.04}>
-            <div
-              className={`relative overflow-hidden rounded-2xl ${idx % 5 === 0 ? "aspect-[4/5]" : "aspect-square"}`}
-            >
-              <img
-                src={img}
-                alt=""
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-110"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&h=400&q=80";
-                }}
-              />
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function CtaBand() {
   return (
     <section className="mx-auto mt-28 mb-10 max-w-7xl px-5 lg:px-8">
@@ -674,7 +633,8 @@ function CtaBand() {
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-40"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1920&q=80";
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1920&q=80";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/85 via-secondary/70 to-secondary/95" />

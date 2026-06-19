@@ -19,7 +19,10 @@ export function Footer() {
                 { Icon: Facebook, url: "https://www.facebook.com/travelkingdom.india.9/" },
                 { Icon: Instagram, url: "https://www.instagram.com/travelkingdom.in/" },
                 { Icon: Youtube, url: "https://www.youtube.com/@TravelKingdom123" },
-                { Icon: Linkedin, url: "https://www.linkedin.com/company/travel-kingdom-travel-agency-in-pune/about/" },
+                {
+                  Icon: Linkedin,
+                  url: "https://www.linkedin.com/company/travel-kingdom-travel-agency-in-pune/about/",
+                },
               ].map(({ Icon, url }, i) => (
                 <a
                   key={i}

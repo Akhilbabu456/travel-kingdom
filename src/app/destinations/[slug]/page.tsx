@@ -68,7 +68,8 @@ export default function Page({ params }: PageProps) {
           alt={d.name}
           className="absolute inset-0 h-full w-full object-cover"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80";
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/85" />
@@ -130,17 +131,17 @@ export default function Page({ params }: PageProps) {
         </div>
         <aside>
           <div className="sticky top-28 rounded-3xl border border-border bg-card p-6 shadow-luxe">
-              <div className="py-2">
-                <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
-                  Exclusive Offer
-                </div>
-                <div className="font-display text-2xl leading-snug text-foreground">
-                  Inquire Now to Unlock the Best Deals
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Contact us for private rates and offline resort tariffs.
-                </p>
+            <div className="py-2">
+              <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+                Exclusive Offer
               </div>
+              <div className="font-display text-2xl leading-snug text-foreground">
+                Inquire Now to Unlock the Best Deals
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">
+                Contact us for private rates and offline resort tariffs.
+              </p>
+            </div>
             <Link
               href={`/contact?dest=${d.name}`}
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow"
